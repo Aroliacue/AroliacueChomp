@@ -68,8 +68,6 @@
 								"Vehicle",
 								"Rigsuit",
 								"Phazon",
-								"Pinnace", // CHOMPedit buildable fighters.
-								"Baron", // CHOMPedit buildable fighters.
 								//"Gopher", // VOREStation Add //CHOMPedit commented micromech stuff, because fuck this trash
 								//"Polecat", // VOREStation Add //CHOMPedit commented micromech stuff, because fuck this trash
 								//"Weasel", // VOREStation Add //CHOMPedit commented micromech stuff, because fuck this trash
@@ -186,10 +184,6 @@
 					category_override += "Durand"
 				if(mech_types & EXOSUIT_MODULE_PHAZON)
 					category_override += "Phazon"
-				if(mech_types & EXOSUIT_MODULE_PINNACE) // CHOMPedit buildable fighters.
-					category_override += "Pinnace"
-				if(mech_types & EXOSUIT_MODULE_BARON) // CHOMPedit buildable fighters.
-					category_override += "Baron"
 
 	var/list/part = list(
 		"name" = D.name,

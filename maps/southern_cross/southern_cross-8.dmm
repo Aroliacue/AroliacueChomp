@@ -1409,6 +1409,11 @@
 	icon_state = "lino"
 	},
 /area/centcom/bar)
+"aQp" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/reinforced,
+/area/shadekin)
 "aQu" = (
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -1786,6 +1791,14 @@
 	icon_state = "steel"
 	},
 /area/centcom/bar)
+"bfZ" = (
+/obj/machinery/vending/boozeomat{
+	req_access = null;
+	pixel_y = 22
+	},
+/obj/effect/floor_decal/milspec/color/silver,
+/turf/simulated/floor/tiled/techmaint,
+/area/shadekin)
 "bge" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/box/handcuffs{
@@ -2398,6 +2411,10 @@
 /obj/effect/overlay/coconut,
 /turf/unsimulated/beach/sand,
 /area/beach)
+"bIF" = (
+/obj/machinery/vending/weeb,
+/turf/simulated/floor/reinforced,
+/area/shadekin)
 "bIK" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 1
@@ -2889,6 +2906,15 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"cdV" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/obj/machinery/gear_painter{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/shadekin)
 "cdW" = (
 /obj/machinery/media/jukebox,
 /turf/unsimulated/floor{
@@ -3796,9 +3822,6 @@
 /obj/structure/toilet,
 /turf/simulated/shuttle/floor/white,
 /area/centcom/evac)
-"cVd" = (
-/turf/closed/indestructible/splashscreen,
-/area/space)
 "cVe" = (
 /obj/structure/holohoop{
 	dir = 4
@@ -5999,10 +6022,6 @@
 	icon_state = "dark"
 	},
 /area/wizard_station)
-"eYo" = (
-/obj/effect/landmark/start/new_player,
-/turf/closed/indestructible/start_area,
-/area/space)
 "eZo" = (
 /obj/structure/table/reinforced,
 /obj/item/device/taperecorder,
@@ -6014,6 +6033,9 @@
 /obj/machinery/vending/donksoft,
 /turf/simulated/floor/reinforced,
 /area/shadekin)
+"faJ" = (
+/turf/closed/indestructible/splashscreen,
+/area/space)
 "faN" = (
 /obj/structure/table/standard,
 /obj/effect/decal/cleanable/cobweb2,
@@ -6445,10 +6467,6 @@
 	icon_state = "vault"
 	},
 /area/centcom/command)
-"fEs" = (
-/obj/machinery/vending/weeb,
-/turf/simulated/floor/reinforced,
-/area/shadekin)
 "fEF" = (
 /turf/unsimulated/floor{
 	icon_state = "white"
@@ -7189,15 +7207,6 @@
 /obj/item/weapon/storage/firstaid/combat,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
-"gvA" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/machinery/vending/blood{
-	req_access = null
-	},
-/turf/simulated/floor/reinforced,
-/area/shadekin)
 "gwg" = (
 /obj/structure/table/sifwooden_reinforced,
 /turf/simulated/floor/wood/alt/broken,
@@ -7475,13 +7484,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
-"gHu" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/obj/machinery/vending/bepis,
-/turf/simulated/floor/reinforced,
-/area/shadekin)
 "gHz" = (
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor{
@@ -10131,9 +10133,6 @@
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/reinforced,
 /area/shadekin)
-"iSX" = (
-/turf/closed/indestructible/start_area,
-/area/space)
 "iTc" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -11546,10 +11545,6 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/geo,
 /area/shadekin)
-"kgr" = (
-/obj/effect/overmap/visitable/planet/kara,
-/turf/space,
-/area/space)
 "khf" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/weapon/storage/box/condimentbottles,
@@ -12154,11 +12149,6 @@
 /obj/structure/lattice,
 /turf/unsimulated/floor/dark,
 /area/shadekin)
-"kxT" = (
-/obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/vending/cigarette,
-/turf/simulated/floor/reinforced,
-/area/shadekin)
 "kxV" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Escape Shuttle Cockpit";
@@ -12621,6 +12611,15 @@
 	icon_state = "steel"
 	},
 /area/centcom/bar)
+"kVf" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/vending/blood{
+	req_access = null
+	},
+/turf/simulated/floor/reinforced,
+/area/shadekin)
 "kVS" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms"
@@ -13778,13 +13777,6 @@
 /obj/structure/sign/double/barsign,
 /turf/unsimulated/wall,
 /area/centcom/bar)
-"mdk" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/machinery/vending/emergencyfood/filled,
-/turf/simulated/floor/reinforced,
-/area/shadekin)
 "mdI" = (
 /obj/structure/sign/scenery/map/right{
 	pixel_y = 32
@@ -14633,6 +14625,9 @@
 /obj/effect/floor_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"mSU" = (
+/turf/closed/indestructible/start_area,
+/area/space)
 "mTk" = (
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
 /obj/machinery/atmospherics/portables_connector,
@@ -15211,6 +15206,10 @@
 /obj/machinery/meter,
 /turf/simulated/shuttle/plating,
 /area/shuttle/skipjack)
+"nvE" = (
+/obj/effect/landmark/start/new_player,
+/turf/closed/indestructible/start_area,
+/area/space)
 "nvF" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	dir = 8;
@@ -16505,15 +16504,6 @@
 	name = "plating"
 	},
 /area/centcom/specops)
-"oTd" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 5
-	},
-/obj/machinery/gear_painter{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/shadekin)
 "oTl" = (
 /obj/structure/table/glass,
 /obj/item/clothing/mask/balaclava,
@@ -16789,6 +16779,13 @@
 	},
 /turf/simulated/shuttle/wall/no_join,
 /area/shuttle/supply)
+"pkK" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/vending/bepis,
+/turf/simulated/floor/reinforced,
+/area/shadekin)
 "plX" = (
 /obj/effect/floor_decal/milspec/color/silver,
 /obj/structure/extinguisher_cabinet{
@@ -18170,6 +18167,13 @@
 /obj/structure/lattice,
 /turf/space,
 /area/space)
+"qNB" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/vending/emergencyfood/filled,
+/turf/simulated/floor/reinforced,
+/area/shadekin)
 "qOj" = (
 /obj/machinery/light{
 	dir = 8
@@ -24789,14 +24793,6 @@
 /obj/effect/floor_decal/corner/brown/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/shadekin)
-"wTm" = (
-/obj/machinery/vending/boozeomat{
-	req_access = null;
-	pixel_y = 22
-	},
-/obj/effect/floor_decal/milspec/color/silver,
-/turf/simulated/floor/tiled/techmaint,
-/area/shadekin)
 "wTx" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood/alt,
@@ -26211,21 +26207,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-cVd
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+faJ
 vFi
 vFi
 vFi
@@ -26394,7 +26390,7 @@ vFi
 vFi
 vFi
 vFi
-kgr
+vFi
 "}
 (2,1,1) = {"
 vFi
@@ -26469,21 +26465,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -26727,21 +26723,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -26985,21 +26981,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -27243,21 +27239,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -27501,21 +27497,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -27759,21 +27755,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -28017,21 +28013,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-eYo
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+nvE
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -28275,21 +28271,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -28533,21 +28529,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -28791,21 +28787,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -29049,21 +29045,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -29307,21 +29303,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -29565,21 +29561,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -29823,21 +29819,21 @@ vFi
 vFi
 vFi
 vFi
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
-iSX
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
+mSU
 vFi
 vFi
 vFi
@@ -61027,7 +61023,7 @@ dFU
 qzw
 omL
 bMy
-wTm
+bfZ
 jni
 urz
 jni
@@ -62546,12 +62542,12 @@ qhK
 wKW
 qpy
 wKW
-gHu
+pkK
 eAT
 sYR
 bST
-fEs
-kxT
+bIF
+aQp
 eay
 bMy
 gCM
@@ -64610,9 +64606,9 @@ qvz
 wKW
 bMy
 rVH
-oTd
-mdk
-gvA
+cdV
+qNB
+kVf
 aVy
 qxH
 sEM

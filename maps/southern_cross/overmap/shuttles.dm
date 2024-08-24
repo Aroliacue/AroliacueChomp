@@ -27,7 +27,7 @@
 	name = "Baby_mammoth"
 	warmup_time = 5
 	current_location = "baby_mammoth_dock"
-	docking_controller_tag = "Baby_mammoth"
+	docking_controller_tag = "baby_mammoth"
 	shuttle_area = /area/shuttle/baby_mammoth
 	fuel_consumption = 2
 	move_direction = NORTH
