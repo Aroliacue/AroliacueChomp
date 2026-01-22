@@ -92,12 +92,16 @@
 
 	heat_discomfort_level = 320 // 46 Celsius, not so comfortable in high temperatures.
 	heat_discomfort_strings = list(
-		"Our carapace bristles in the heat."
+		"The heat bites through our chitin."
+		"The warmth irritates our body."
+		"The balmy air feels like an oven."
 		)
 
 	cold_discomfort_level = 200 // -73 Celsius, very comfortable in below freezing temperatures.
 	cold_discomfort_strings = list(
-		"The cold bites through our carapace."
+		"The cold bites through our chitin."
+		"Ice forms on our exoskeleton."
+		"The freezing air induces a shiver."
 		)
 
 	hazard_low_pressure = HAZARD_LOW_PRESSURE*0 // Xenomorph Hybrids are immune to space, but still need to breathe.
