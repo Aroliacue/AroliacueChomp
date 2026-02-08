@@ -277,3 +277,80 @@
   - bugfix: Non-revivable entities can no longer be revived via CPR
   - bugfix: Synthetics can no longer be revived via CPR
   - bugfix: You will no longer gasp after being revived via CPR if you have no lungs
+2026-01-23:
+  CHOMPStation2StaffMirrorBot:
+  - qol: adds spoiler to character directory
+  - bugfix: a crash case in the character editor
+  - code_imp: tgui dependency up
+2026-01-24:
+  CHOMPStation2StaffMirrorBot:
+  - rscadd: Added a new preference that allows you to drop all of your items and possibly
+      underwear upon being suddenly resized by more than 30%.
+  - bugfix: Fixed temperature damage toggle saving.
+  - bugfix: Bluespace collars changing into shock collar sprites on toggling power.
+  - qol: Made unlucky trigger toe stubbing one tenth as often.
+  FluffMedic:
+  - qol: Some more POIs can unlock omnis
+  Guti:
+  - bugfix: Fixed mlemington activating the mlem spree at any time
+  - bugfix: Fixed narcolepsy missing a description
+  - bugfix: Fixed Pandemic UI not showing the severity of a virus
+  - bugfix: Fixed viruses changing cures when taking it out of a mob
+  - bugfix: Fixed the PanDEMIC showing the ID for the reagent instead of the name
+      as the cure
+  - spellcheck: Removed "the" when Biometallic Replication symptom picked any organ
+  - code_imp: Added IMMUTABLE flag for viruses, to not allow them to change
+2026-01-25:
+  CHOMPStation2StaffMirrorBot:
+  - rscdel: no longer existing config entry
+  - bugfix: another bad object spawn in xenoarch
+  - bugfix: empty lists for auto transfer
+  - bugfix: ghost leaving VR not getting ghostized before qdel
+  - bugfix: flip no longer restores any flags badly
+  - rscadd: 'Added a new Skin Reagent trait, that allows you to pick one of six reagents
+      that coat your skin and are applied to people when they lick you. These include:
+      Ethanol, Capsaicin, Sleep Toxin, Rainbow Toxin, Paralysis Toxin and Pain Enzyme.'
+  - code_imp: Also added a new option to traits to allow you to use a single list
+      for them to select preferences, using a list variable called "multiple_choice".
+  Kashargul:
+  - bugfix: missing init hint
+  - bugfix: server crash on egg laying
+2026-01-27:
+  CHOMPStation2StaffMirrorBot:
+  - qol: allows to lower limit liquid gen %
+  - code_imp: converts a bunch of variables to GLOB
+  - bugfix: a few runtimes
+  Diana:
+  - code_imp: Adds more framework for radiation component to do more fancy things.
+  - qol: Nutrition gain from radiation gains can be toggled on/off
+  Guti:
+  - balance: Lowered the threshold for chemical addictions
+2026-01-30:
+  CHOMPStation2StaffMirrorBot:
+  - qol: Showers now instantly run a wash call on things that go under them while
+      active
+  - code_imp: Removed a fair few unnecessary variables on showers and replaced it
+      with better code.
+  - code_imp: Showers can have their output reagent overridden, either by adminbus
+      or subtypes.
+  - code_imp: Showers no longer run process() calls while inactive. This should free
+      up a fair few SSmachines process calls that did literally nothing
+  - code_imp: converts the next set of globals to GLOBs
+  - bugfix: Fixes an uncleared hardref on disposal pipe trunks when deleting their
+      linked object
+  - bugfix: Makes the pet rat undevourable and undigestable, like most other pets.
+  Diana:
+  - bugfix: Tsci can no longer be spam-failed
+  - bugfix: Tsci can no longer cause a failure while an active teleport is ongoing.
+  FluffMedic:
+  - balance: Cult Cell recharges faster
+  - balance: Tyr Agate Hammer has gone from 20 to 35 force
+  - bugfix: Tyr Agate Hammer has the proper meta desc.
+  - bugfix: Tyr weapons should no longer gain a blue hue
+  Will:
+  - bugfix: plastique explosive explosion reduced, seismic charge unchanged
+  - qol: Methane canisters can now be ordered from cargo, like all other gasses.
+2026-01-31:
+  CHOMPStation2StaffMirrorBot:
+  - code_imp: dependency up
+  - code_imp: converts the next set of globals to GLOBs
