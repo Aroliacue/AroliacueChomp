@@ -92,15 +92,15 @@
 
 	heat_discomfort_level = 320 // 46 Celsius, not so comfortable in high temperatures.
 	heat_discomfort_strings = list(
-		"The heat bites through our chitin."
-		"The warmth irritates our body."
+		"The heat bites through our chitin.",
+		"The warmth irritates our body.",
 		"The balmy air feels like an oven."
 		)
 
 	cold_discomfort_level = 200 // -73 Celsius, very comfortable in below freezing temperatures.
 	cold_discomfort_strings = list(
-		"The cold bites through our chitin."
-		"Ice forms on our exoskeleton."
+		"The cold bites through our chitin.",
+		"Ice forms on our exoskeleton.",
 		"The freezing air induces a shiver."
 		)
 
@@ -189,7 +189,7 @@
 
 /datum/species/xenomorph_hybrid/proc/regenerate(var/mob/living/carbon/human/H)
 	var/heal_rate = weeds_heal_rate
-	var/mend_prob = 5 // Much lower than regular xenos.
+	var/mend_prob = 10 // Much lower than regular xenos. Bumped from 5 to 10 as medical changes allowed all carbons to passively heal damage after a long delay.
 	if (!H.resting)
 		heal_rate = 0 // No passive health regen without resting.
 		mend_prob = 0 // No passive health regen without resting.
