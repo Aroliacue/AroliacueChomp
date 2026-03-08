@@ -170,7 +170,6 @@ FIRE ALARM
 			time = 0
 			timing = 0
 			STOP_PROCESSING(SSobj, src)
-		updateDialog()
 	last_process = world.timeofday
 
 	if(detecting && (locate(/obj/fire) in loc))
@@ -217,7 +216,7 @@ FIRE ALARM
 		return
 	var/area/area = get_area(src)
 	for(var/obj/machinery/firealarm/FA in area)
-		fire_alarm.clearAlarm(src.loc, FA)
+		GLOB.fire_alarm.clearAlarm(src.loc, FA)
 		FA.soundloop.stop() // CHOMPEdit: Soundloop
 		FA.firewarn = FALSE // CHOMPEdit: Soundloop Fix
 	update_icon()
@@ -231,7 +230,7 @@ FIRE ALARM
 	if(!firewarn && !alarms_hidden) // CHOMPAdd
 		GLOB.global_announcer.autosay("Tripped [area]", "Fire Alarm Monitor", DEPARTMENT_ENGINEERING)
 	for(var/obj/machinery/firealarm/FA in area)
-		fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden)
+		GLOB.fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden)
 		FA.soundloop.start() // CHOMPEdit: Soundloop
 		FA.firewarn = TRUE // CHOMPEdit: Soundloop Fix
 	update_icon()

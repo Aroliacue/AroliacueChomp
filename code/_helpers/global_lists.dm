@@ -22,6 +22,8 @@ GLOBAL_LIST_EMPTY(mechas_list)						//list of all mechs. Used by hostile mobs ta
 var/global/list/obj/item/pda/PDAs = list()
 var/global/list/obj/item/communicator/all_communicators = list()
 
+// Those networks can only be accessed by pre-existing terminals. AIs and new terminals can't use them.
+GLOBAL_LIST_INIT(restricted_camera_networks, list(NETWORK_ERT,NETWORK_MERCENARY,"Secret", NETWORK_COMMUNICATORS))
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
@@ -70,14 +72,8 @@ GLOBAL_LIST_INIT(backbaglist, list("Nothing", "Backpack", "Satchel", "Satchel Al
 GLOBAL_LIST_INIT(pdachoicelist, list("Default", "Slim", "Old", "Rugged", "Holographic", "Wrist-Bound","Slider", "Vintage"))
 GLOBAL_LIST_INIT(exclude_jobs, list(/datum/job/ai,/datum/job/cyborg))
 
-// Visual nets
-var/list/datum/visualnet/visual_nets = list()
-var/datum/visualnet/camera/cameranet = new()
-var/datum/visualnet/cult/cultnet = new()
-var/datum/visualnet/ghost/ghostnet = new()
-
-var/global/list/obj/machinery/message_server/message_servers = list()
-var/global/list/datum/supply_drop_loot/supply_drop
+GLOBAL_LIST_EMPTY_TYPED(message_servers, /obj/machinery/message_server)
+GLOBAL_LIST_INIT_TYPED(supply_drop, /datum/supply_drop_loot, dd_sortedObjectList(init_subtypes(/datum/supply_drop_loot)))
 // Runes
 GLOBAL_LIST_EMPTY(rune_list)
 GLOBAL_LIST_EMPTY(escape_list)
@@ -135,7 +131,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 /////Initial Building/////
 //////////////////////////
 
-/proc/makeDatumRefLists()
+/proc/make_datum_reference_lists()
 	var/list/paths
 
 	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
@@ -249,9 +245,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 		GLOB.suit_cycler_emagged += new SCC()
 
 	//Ores
-	paths = subtypesof(/ore)
+	paths = subtypesof(/datum/ore)
 	for(var/oretype in paths)
-		var/ore/OD = new oretype()
+		var/datum/ore/OD = new oretype()
 		GLOB.ore_data[OD.name] = OD
 
 	paths = subtypesof(/datum/alloy)
@@ -259,7 +255,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		GLOB.alloy_data += new alloytype()
 
 	//Closet appearances
-	GLOB.closet_appearances = decls_repository.get_decls_of_type(/decl/closet_appearance)
+	GLOB.closet_appearances = GLOB.decls_repository.get_decls_of_type(/datum/decl/closet_appearance)
 
 	paths = subtypesof(/datum/sprite_accessory/ears)
 	for(var/path in paths)
@@ -318,8 +314,13 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/species_name in whitelisted_icons)
 		GLOB.custom_species_bases += species_name
 
-	return 1 // Hooks must return 1
+	// Create frame types.
+	populate_frame_types()
 
+	// Create robolimbs for chargen.
+	populate_robolimb_list()
+
+	cache_no_ceiling_image()
 
 /// Inits the crafting recipe list, sorting crafting recipe requirements in the process.
 /proc/init_crafting_recipes(list/crafting_recipes)
@@ -342,25 +343,13 @@ GLOBAL_LIST_EMPTY(mannequins)
 //Hexidecimal numbers
 GLOBAL_LIST_INIT(hexNums, list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"))
 
-/*
-// Many global vars aren't GLOB type. This puts them there to be more easily inspected.
-GLOBAL_LIST_EMPTY(legacy_globals)
-
-/proc/populate_legacy_globals()
-	//Note: these lists cannot be changed to a new list anywhere in code! //Lies. TG doesn't use any var/global/list so neither will we!
-	//If they are, these will cause the old list to stay around!
-	//Check by searching for "<GLOBAL_NAME> =" in the entire codebase
-	//visual nets
-	GLOB.legacy_globals["visual_nets"] = visual_nets
-	GLOB.legacy_globals["cameranet"] = cameranet
-	GLOB.legacy_globals["cultnet"] = cultnet
-	*/
-
 GLOBAL_LIST_INIT(selectable_footstep, list(
 	"Default" = FOOTSTEP_MOB_HUMAN,
 	"Claw" = FOOTSTEP_MOB_CLAW,
 	"Light Claw" = FOOTSTEP_MOB_TESHARI,
 	"Slither" = FOOTSTEP_MOB_SLITHER,
+	"Mech" = FOOTSTEP_MOB_MECHY,
+	"Heavy" = FOOTSTEP_MOB_HEAVY_ALT
 ))
 
 // Put any artifact effects that are duplicates, unique, or otherwise unwated in here! This prevents them from spawning via RNG.
@@ -632,7 +621,7 @@ var/global/list/assigned_blocks[DNA_SE_LENGTH]
 GLOBAL_LIST_EMPTY(gear_distributed_to)
 GLOBAL_LIST_EMPTY(overlay_cache) //cache recent overlays
 
-var/global/list/all_technomancer_gambit_spells = typesof(/obj/item/spell) - list(
+GLOBAL_LIST_INIT(all_technomancer_gambit_spells, typesof(/obj/item/spell) - list(
 	/obj/item/spell,
 	/obj/item/spell/gambit,
 	/obj/item/spell/projectile,
@@ -640,10 +629,8 @@ var/global/list/all_technomancer_gambit_spells = typesof(/obj/item/spell) - list
 //	/obj/item/spell/insert,
 	/obj/item/spell/spawner,
 	/obj/item/spell/summon,
-	/obj/item/spell/modifier)
+	/obj/item/spell/modifier))
 
-var/global/list/image/splatter_cache=list()
-var/global/list/obj/cortical_stacks = list() //Stacks for 'leave nobody behind' objective. Clumsy, rewrite sometime.
 var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 // color-dir-dry
@@ -982,16 +969,13 @@ GLOBAL_LIST_INIT(special_roles, list(
 	"ninja" = 0,										// 10
 	"raider" = 0,										// 11
 	"diona" = 0,										// 12
-	"mutineer" = 0,										// 13
-	"loyalist" = 0,										// 14
-	"pAI candidate" = 1,								// 15
-	"lost drone" = 1,									// 16
-	"maint pred" = 1,									// 17
-	"stowaway" = 1,										// 18 // CHOMPEdit
-	"morph" = 1,										// 19
-	"corgi" = 1,										// 20
-	"cursed sword" = 1,									// 21
-	"Ship Survivor" = 1,								// 22
+	"loyalist" = 0,										// 13
+	"pAI" = 1,											// 14
+	"lost drone" = 1,									// 15
+	"maint critter" = 1,								// 16
+	"corgi" = 1,										// 17
+	"cursed sword" = 1,									// 18
+	"ship survivor" = 1,								// 19
 ))
 
 GLOBAL_LIST_INIT(maint_mob_pred_options, list(
@@ -1135,23 +1119,27 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 	"huge scorched area"
 	))
 
-GLOBAL_LIST_INIT(wide_chassis, list(
-	"rat",
-	"panther",
-	"teppi",
-	"pai-diredog",
-	"pai-horse_lune",
-	"pai-horse_soleil",
-	"pai-pdragon",
-	"pai-protodog"
-	))
+GLOBAL_LIST_EMPTY(paikeys)
 
-GLOBAL_LIST_INIT(flying_chassis, list(
-	"pai-parrot",
-	"pai-bat",
-	"pai-butterfly",
-	"pai-hawk",
-	"cyberelf"
+GLOBAL_LIST_EMPTY(pai_software_by_key)
+GLOBAL_LIST_EMPTY(default_pai_software)
+GLOBAL_LIST_INIT(pai_emotions, list(
+		"Neutral" = 1,
+		"What" = 2,
+		"Happy" = 3,
+		"Cat" = 4,
+		"Extremely Happy" = 5,
+		"Face" = 6,
+		"Laugh" = 7,
+		"Sad" = 8,
+		"Angry" = 9,
+		"Silly" = 10,
+		"Nose" = 11,
+		"Smirk" = 12,
+		"Exclamation Points" = 13,
+		"Question Mark" = 14,
+		"Blank" = 15,
+		"Off" = 16
 	))
 
 //Sure I could spend all day making wacky overlays for all of the different forms
@@ -1225,18 +1213,6 @@ GLOBAL_LIST_INIT(all_tooltip_styles, list(
 	"Operative",
 	"Clockwork"
 	))
-
-//Global Datums
-var/global/datum/pipe_icon_manager/icon_manager
-var/global/datum/emergency_shuttle_controller/emergency_shuttle = new
-
-// We manually initialize the alarm handlers instead of looping over all existing types
-// to make it possible to write: camera_alarm.triggerAlarm() rather than SSalarm.managers[datum/alarm_handler/camera].triggerAlarm() or a variant thereof.
-/var/global/datum/alarm_handler/atmosphere/atmosphere_alarm	= new()
-/var/global/datum/alarm_handler/camera/camera_alarm			= new()
-/var/global/datum/alarm_handler/fire/fire_alarm				= new()
-/var/global/datum/alarm_handler/motion/motion_alarm			= new()
-/var/global/datum/alarm_handler/power/power_alarm			= new()
 
 GLOBAL_LIST_EMPTY(gun_choices)
 
@@ -1354,41 +1330,6 @@ GLOBAL_LIST_INIT(possible_ghost_sprites, list(
 GLOBAL_LIST_EMPTY(sparring_attack_cache)
 
 GLOBAL_LIST_EMPTY(protean_abilities)
-
-//PAI stuff
-GLOBAL_LIST_INIT(possible_chassis, list(
-	"Drone" = "pai-repairbot",
-	"Cat" = "pai-cat",
-	"Mouse" = "pai-mouse",
-	"Monkey" = "pai-monkey",
-	"Borgi" = "pai-borgi",
-	"Fox" = "pai-fox",
-	"Parrot" = "pai-parrot",
-	"Rabbit" = "pai-rabbit",
-	"Dire wolf" = "pai-diredog",
-	"Horse (Lune)" = "pai-horse_lune",
-	"Horse (Soleil)" = "pai-horse_soleil",
-	"Dragon" = "pai-pdragon",
-	"Bear" = "pai-bear",
-	"Fennec" = "pai-fen",
-	"Type Zero" = "pai-typezero",
-	"Raccoon" = "pai-raccoon",
-	"Raptor" = "pai-raptor",
-	"Corgi" = "pai-corgi",
-	"Bat" = "pai-bat",
-	"Butterfly" = "pai-butterfly",
-	"Hawk" = "pai-hawk",
-	"Duffel" = "pai-duffel",
-	"Rat" = "rat",
-	"Panther" = "panther",
-	"Cyber Elf" = "cyberelf",
-	"Teppi" = "teppi",
-	"Catslug" = "catslug",
-	"Car" = "car",
-	"Type One" = "typeone",
-	"Type Thirteen" = "13",
-	"Protogen Dog" = "pai-protodog"
-	))
 
 //PAI stuff
 GLOBAL_LIST_INIT(possible_say_verbs, list(
@@ -1650,6 +1591,11 @@ GLOBAL_LIST_INIT(suitable_fish_turf_types,  list(
 	/turf/simulated/floor/holofloor/beach/coastline,
 	/turf/simulated/floor/water
 ))
+
+GLOBAL_LIST_INIT(ventcrawl_machinery, list(
+	/obj/machinery/atmospherics/unary/vent_pump,
+	/obj/machinery/atmospherics/unary/vent_scrubber
+	))
 
 GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
 
