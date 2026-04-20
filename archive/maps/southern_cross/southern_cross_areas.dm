@@ -77,6 +77,7 @@
 /area/surface/outside/plains/mountains
 	name = "Mountains"
 	icon_state = "darkred"
+	outdoors = OUTDOORS_NO // So it doesn't snow inside the mountains.
 
 // Paths get their own area so POIs don't overwrite pathways.
 /area/surface/outside/path
