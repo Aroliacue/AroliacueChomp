@@ -67,6 +67,12 @@
 /area/surface/outside/plains/mountains
 	name = "Mountains"
 	icon_state = "darkred"
+	outdoors = OUTDOORS_NO // No weather in the rocks either
+
+// So POIs don't spawn inside the village.
+/area/surface/outside/plains/sifvillage
+	name = "Sif Village"
+	icon_state = "yellow"
 
 // Paths get their own area so POIs don't overwrite pathways.
 /area/surface/outside/path
