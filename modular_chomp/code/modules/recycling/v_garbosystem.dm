@@ -14,6 +14,7 @@ GLOBAL_VAR_INIT(Recycled_Items, 0)
 	var/obj/machinery/recycling/crusher/crusher //Connects to regular crusher
 	var/obj/machinery/button/garbosystem/button
 	var/list/affecting
+	var/process_timer
 	var/voracity = 5 //How much stuff is swallowed at once.
 
 /obj/machinery/v_garbosystem/Initialize(mapload)
@@ -33,6 +34,9 @@ GLOBAL_VAR_INIT(Recycled_Items, 0)
 	return
 
 /obj/machinery/v_garbosystem/Destroy()
+	if(process_timer)
+		deltimer(process_timer)
+		process_timer = null
 	crusher = null
 	button = null
 	. = ..()
@@ -57,22 +61,35 @@ GLOBAL_VAR_INIT(Recycled_Items, 0)
 /obj/machinery/v_garbosystem/proc/update()
 	if(stat & (BROKEN | NOPOWER))
 		operating = FALSE
+		if(process_timer)
+			deltimer(process_timer)
+			process_timer = null
 		update_use_power(USE_POWER_OFF)
 		return
 	if(!operating)
+		if(process_timer)
+			deltimer(process_timer)
+			process_timer = null
 		update_use_power(USE_POWER_OFF)
 		return
 	icon_state = "cronchy_active"
-	START_MACHINE_PROCESSING(src)
+	if(!process_timer)
+		process_timer = addtimer(CALLBACK(src, PROC_REF(grind_cycle)), 0.5 SECONDS, TIMER_STOPPABLE | TIMER_LOOP)
 	update_use_power(USE_POWER_ACTIVE)
 
-/obj/machinery/v_garbosystem/process()
+/obj/machinery/v_garbosystem/proc/grind_cycle()
 	if(!operating || !crusher || crusher.stat & (NOPOWER|BROKEN))
 		icon_state = "cronchy_off"
-		return PROCESS_KILL
+		if(process_timer)
+			deltimer(process_timer)
+			process_timer = null
+		return
 	if(stat & (BROKEN | NOPOWER))
 		icon_state = "cronchy_off"
-		return PROCESS_KILL
+		if(process_timer)
+			deltimer(process_timer)
+			process_timer = null
+		return
 	icon_state = "cronchy_active"
 
 	affecting = loc.contents - src
@@ -113,7 +130,8 @@ GLOBAL_VAR_INIT(Recycled_Items, 0)
 								transfer_reagent_to_tank(H.vessel,0.5)
 							transfer_sludge_to_tank(rand(4,9))
 						else
-							L.adjustBruteLoss(25)
+							A.SpinAnimation(5,3)
+							L.adjustBruteLoss(15)
 							items_taken++
 							break
 					for(var/atom/movable/C in A.contents)
@@ -122,7 +140,7 @@ GLOBAL_VAR_INIT(Recycled_Items, 0)
 						C.forceMove(loc)
 					if(isitem(A))
 						A.SpinAnimation(5,3)
-						spawn(15)
+						spawn(5)
 							if(A.loc == loc)
 								if(A.reagents)
 									transfer_reagent_to_tank(A.reagents,1)
@@ -134,7 +152,7 @@ GLOBAL_VAR_INIT(Recycled_Items, 0)
 						items_taken++
 					else
 						A.SpinAnimation(5,3)
-						spawn(15)
+						spawn(5)
 							if(A)
 								A.forceMove(src)
 								if(A.reagents)

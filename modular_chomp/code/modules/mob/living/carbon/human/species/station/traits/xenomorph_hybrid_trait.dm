@@ -57,3 +57,13 @@
 	category = 0
 	custom_only = FALSE
 	var_changes = list("total_health" = 200) // Bigger health pool
+
+/datum/trait/neutral/xenomorph_baseliner
+	sort = TRAIT_SORT_SPECIES
+	allowed_species = list(SPECIES_XENOMORPH_HYBRID)
+	name = "Xenomorph Hybrid: Baseliner"
+	desc = "We have no specific strengths, but no weaknesses, either."
+	cost = 0
+	category = 0
+	custom_only = FALSE
+	var_changes = list("total_health" = 100, "burn_mod" = 1, "toxins_mod" = 1, "pain_mod" = 1, "chem_strength_heal" = 1, "metabolic_rate" = 1, "chem_strength_alcohol" = 1) // Completely baseline
