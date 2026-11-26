@@ -1,7 +1,7 @@
 GLOBAL_VAR_INIT(global_vantag_hud, 0)
 
 ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/living/dropee in GLOB.mob_list)
-	var/confirm = tgui_alert(src, "Make [dropee] drop everything?", "Message", list("Yes", "No"))
+	var/confirm = tgui_alert(user, "Make [dropee] drop everything?", "Message", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
@@ -74,25 +74,97 @@ ADMIN_VERB(cmd_check_new_players, R_HOLDER, "Check new Players", "Check the acco
 		return
 	to_chat(user, "No matches for that age range found.")
 
-ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_subtle_message, R_HOLDER, "Subtle Message", mob/targat_mob in get_mob_with_client_list())
-	var/msg = tgui_input_text(user, "Message:", text("Subtle PM to [targat_mob.key]"), encode = FALSE)
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_subtle_message, R_HOLDER, "Subtle Message", mob/target_mob in get_mob_with_client_list())
+	var/source = tgui_input_list(user, "Select the message source:", "Subtle Message for [target_mob.key]", list("Subtle Message", "CentCom", "Syndicate", "Talon HQ", "SolGov", "Custom"))
+	if(!source)
+		return
 
-	if (!msg)
+	if(source == "CentCom")
+		if(!isliving(target_mob))
+			to_chat(user, span_warning("CentCom messages can only be sent to living mobs."))
+			return
+		var/mob/living/L = target_mob
+		if(!L.CanObtainCentcommMessage())
+			to_chat(user, span_warning("The person you are trying to contact is not wearing a headset."))
+			return
+
+	if(source == "Syndicate")
+		if(!isliving(target_mob))
+			to_chat(user, span_warning("Syndicate messages can only be sent to living mobs."))
+			return
+		var/mob/living/L = target_mob
+		if(!L.CanObtainCentcommMessage())
+			to_chat(user, span_warning("The person you are trying to contact is not wearing a headset."))
+			return
+
+	if(source == "Talon HQ")
+		if(!isliving(target_mob))
+			to_chat(user, span_warning("Talon HQ messages can only be sent to living mobs."))
+			return
+		var/mob/living/L = target_mob
+		if(!L.CanObtainCentcommMessage())
+			to_chat(user, span_warning("The person you are trying to contact is not wearing a headset."))
+			return
+
+	if(source == "SolGov")
+		if(!isliving(target_mob))
+			to_chat(user, span_warning("SolGov messages can only be sent to living mobs."))
+			return
+		var/mob/living/L = target_mob
+		if(!L.CanObtainCentcommMessage())
+			to_chat(user, span_warning("The person you are trying to contact is not wearing a headset."))
+			return
+
+	var/custom_sender = ""
+	if(source == "Custom")
+		var/col_choice = tgui_input_list(user, "Choose a name color:", "Color", list("Green", "Blue", "Honk", "Grey"))
+		if(!col_choice)
+			return
+
+		custom_sender = tgui_input_text(user, "Enter the sender's name:", "Sender for [target_mob.key]")
+		if(!custom_sender)
+			return
+		custom_sender = span_bold(custom_sender)
+		switch(col_choice)
+			if("Green")
+				custom_sender = span_green(custom_sender)
+			if("Blue")
+				custom_sender = span_blue(custom_sender)
+			if("HONK")
+				custom_sender = span_pink(custom_sender)
+			if("Gray")
+				custom_sender = span_gray(custom_sender)
+
+	var/msg = tgui_input_text(user, "Message:", "Subtle PM to [target_mob.key]")
+
+	if(!msg)
 		return
 
 	if(!(msg[1] == "<" && msg[length(msg)] == ">")) //You can use HTML but only if the whole thing is HTML. Tries to prevent admin 'accidents'.
 		msg = sanitize(msg)
 
-	to_chat(targat_mob, span_bold("You hear a voice in your head...") + " " + span_italics("[msg]"))
+	switch(source)
+		if("Subtle Message")
+			to_chat(target_mob, span_infoplain(span_bold("You hear a voice in your head... " + span_italics(msg))))
+		if("CentCom")
+			to_chat(target_mob, span_infoplain("You hear a crackle in your headset, followed by a voice: \"" + span_bold(span_blue("Central Command")) + " is on touch. Stand by for important message: " + span_bold("\"[msg]\"") + " End of transmission.\""))
+		if("Syndicate")
+			to_chat(target_mob, span_infoplain("You hear a crackle in your headset, followed by a voice: \"Expect a message from " + span_bold(span_italics(span_red("Syndicate"))) + ". Listen carefully, Agent: " + span_bold("\"[msg]\"") + " End of transmission.\""))
+		if("Talon HQ")
+			to_chat(target_mob, span_infoplain("You hear a crackle in your headset, followed by a voice: \"" + span_bold(span_orange("Talon Headquarter")) + " is on touch. Stand by for important message: " + span_bold("\"[msg]\"") + " End of transmission.\""))
+		if("SolGov")
+			to_chat(target_mob, span_infoplain("You hear a crackle in your headset, followed by a voice: \"" + span_bold(span_yellow("Solar Government")) + " is on touch. Stand by for important message: " + span_bold("\"[msg]\"") + " End of transmission.\""))
+		if("Custom")
+			to_chat(target_mob, span_infoplain("You hear a crackle in your headset, followed by a voice: \"Expect a message from [custom_sender]. Message: " + span_bold("\"[msg]\"") + " End of transmission.\""))
 
-	log_admin("SubtlePM: [key_name(user)] -> [key_name(targat_mob)] : [msg]")
-	msg = span_admin_pm_notice(span_bold(" SubtleMessage: [key_name_admin(user)] -> [key_name_admin(targat_mob)] :") + " [msg]")
+	log_admin("SubtlePM([source]): [key_name(user)] -> [key_name(target_mob)] : [msg]")
+	msg = span_admin_pm_notice(span_bold(" SubtleMessage([source]): [key_name_admin(user)] -> [key_name_admin(target_mob)] :") + " [msg]")
 	message_admins(msg)
-	admin_ticket_log(targat_mob, msg)
+	admin_ticket_log(target_mob, msg)
 	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(cmd_admin_world_narrate, R_FUN|R_EVENT, "Global Narrate", "Globally narrate.", ADMIN_CATEGORY_FUN_NARRATE) // Allows administrators to fluff events a little easier -- TLE
-	var/msg = tgui_input_text(user, "Message:", text("Enter the text you wish to appear to everyone:"), encode = FALSE)
+	var/msg = tgui_input_text(user, "Message:", "Enter the text you wish to appear to everyone:", encode = FALSE)
 
 	if (!msg)
 		return
@@ -123,7 +195,7 @@ ADMIN_VERB(cmd_admin_local_narrate, R_FUN|R_EVENT, "Local Narrate", "Locally nar
 	feedback_add_details("admin_verb","LNR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
-ADMIN_VERB(cmd_admin_direct_narrate, R_FUN|R_EVENT, "Direct Narrate", "Directly narrate the target.", ADMIN_CATEGORY_FUN_NARRATE, mob/target_mob)
+ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_direct_narrate, R_FUN|R_EVENT, "Direct Narrate", "Directly narrate the target.", ADMIN_CATEGORY_FUN_NARRATE, mob/target_mob in GLOB.mob_list)
 	if(!target_mob)
 		target_mob = tgui_input_list(user, "Direct narrate to who?", "Active Players", get_mob_with_client_list())
 
@@ -159,7 +231,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_godmode, R_HOLDER, "Toggle Godmode", "Togg
 	admin_ticket_log(target_mob, msg)
 	feedback_add_details("admin_verb","GOD_ENABLE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/proc/cmd_admin_mute(mob/target, mute_type, automute = 0, mob/user)
+/proc/cmd_admin_mute(mob/target, mute_type, automute = FALSE, mob/user)
 	if(automute)
 		if(!CONFIG_GET(flag/automute_on))
 			return
@@ -222,7 +294,7 @@ ADMIN_VERB(cmd_admin_add_random_ai_law, R_ADMIN|R_FUN, "Add Random AI Law", "Add
 	if(!show_log)
 		return
 	if(show_log == "Yes")
-		GLOB.command_announcement.Announce("Ion storm detected near \the [station_name()]. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
+		GLOB.command_announcement.Announce("Ion storm detected near \the [station_name()]. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = ANNOUNCER_MSG_IONSTORM)
 
 	IonStorm(0)
 	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -232,7 +304,7 @@ Allow admins to set players to be able to respawn/bypass 30 min wait, without th
 Ccomp's first proc.
 */
 
-/client/proc/get_ghosts(var/notify = 0,var/what = 2)
+/client/proc/get_ghosts(notify = 0,what = 2)
 	// what = 1, return ghosts ass list.
 	// what = 2, return mob list
 
@@ -390,7 +462,7 @@ ADMIN_VERB(respawn_character, (R_ADMIN|R_REJUVINATE), "Spawn Character", "(Re)Sp
 
 	//Well you're not reloading their job or they never had one.
 	if(!charjob)
-		var/pickjob = tgui_input_list(src, "Pick a job to assign them (or none).","Job Select", GLOB.joblist.Copy() + "-No Job-", "-No Job-")
+		var/pickjob = tgui_input_list(src, "Pick a job to assign them (or none).","Job Select", SSjob.occupations_by_name.Copy() + "-No Job-", "-No Job-")
 		if(!pickjob)
 			return
 		if(pickjob != "-No Job-")
@@ -521,11 +593,11 @@ ADMIN_VERB(respawn_character, (R_ADMIN|R_REJUVINATE), "Spawn Character", "(Re)Sp
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
-			GLOB.job_master.EquipRank(new_character, charjob, 1)
+			SSjob.equip_rank(new_character, charjob, 1)
 			if(new_character.mind)
 				new_character.mind.assigned_role = charjob
-				new_character.mind.role_alt_title = GLOB.job_master.GetPlayerAltTitle(new_character, charjob)
-		equip_custom_items(new_character)	//CHOMPEdit readded to enable custom_item.txt
+				new_character.mind.role_alt_title = SSjob.get_player_alt_title(new_character, charjob)
+			equip_custom_items(new_character)	//CHOMPEdit readded to enable custom_item.txt
 
 	//If customised job title, modify here.
 	if(custom_job && custom_job_title)
@@ -605,7 +677,7 @@ ADMIN_VERB(cmd_admin_add_freeform_ai_law, R_FUN, "Add Custom AI law", "Adds a cu
 
 	var/show_log = tgui_alert(user, "Show ion message?", "Message", list("Yes", "No"))
 	if(show_log == "Yes")
-		GLOB.command_announcement.Announce("Ion storm detected near the [station_name()]. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
+		GLOB.command_announcement.Announce("Ion storm detected near the [station_name()]. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = ANNOUNCER_MSG_IONSTORM)
 	feedback_add_details("admin_verb","IONC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_rejuvenate, R_ADMIN|R_FUN|R_MOD, "Rejuvenate", "Fully restores the target mob.", ADMIN_CATEGORY_GAME, mob/living/target_mob in GLOB.mob_list)
@@ -640,10 +712,10 @@ ADMIN_VERB(cmd_admin_create_centcom_report, R_ADMIN|R_SERVER|R_FUN, "Create Comm
 	if(!confirm)
 		return
 	if(confirm == "Yes")
-		GLOB.command_announcement.Announce(input, customname, new_sound = 'sound/AI/commandreport.ogg', msg_sanitized = 1);
+		GLOB.command_announcement.Announce(input, customname, new_sound = ANNOUNCER_MSG_NEW_COMMAND_REPORT, msg_sanitized = 1);
 	else
 		to_chat(world, span_boldannounce("New [using_map.company_name] Update available at all communication consoles."))
-		SEND_SOUND(world, sound('sound/AI/commandreport.ogg'))
+		play_simple_announcement(world, ANNOUNCER_MSG_NEW_COMMAND_REPORT)
 
 	log_admin("[key_name(user)] has created a command report: [input]")
 	message_admins("[key_name_admin(user)] has created a command report")
@@ -653,8 +725,8 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_delete, R_FUN|R_ADMIN, "Delete", "Delete t
 	user.admin_delete(atom_target)
 
 ADMIN_VERB(cmd_admin_list_open_jobs, R_HOLDER, "List free slots", "Show available job slots.", ADMIN_CATEGORY_INVESTIGATE)
-	if(GLOB.job_master)
-		for(var/datum/job/job in GLOB.job_master.occupations)
+	if(SSjob)
+		for(var/datum/job/job in SSjob.occupations)
 			to_chat(user, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

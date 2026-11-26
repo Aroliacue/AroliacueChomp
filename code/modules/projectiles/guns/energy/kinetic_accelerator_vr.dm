@@ -78,6 +78,7 @@
 	var/list/modkits = list()
 
 	var/recharge_timerid
+	borg_flags = COUNTS_AS_ROBOT_PKA
 
 /obj/item/gun/energy/kinetic_accelerator/consume_next_projectile()
 	if(overheat)
@@ -180,7 +181,7 @@
 	if(power_supply.charge < charge_cost)
 		attempt_reload()
 
-/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user, equipping, slot)
 	. = ..()
 	if(!QDELING(src) && !holds_charge)
 		// Put it on a delay because moving item from slot to hand
@@ -210,9 +211,6 @@
 
 	deltimer(recharge_timerid)
 	recharge_timerid = addtimer(CALLBACK(src, PROC_REF(reload)), recharge_time * carried, TIMER_STOPPABLE)
-
-/obj/item/gun/energy/kinetic_accelerator/emp_act(severity, recursive)
-	return
 
 /obj/item/gun/energy/kinetic_accelerator/proc/reload()
 	power_supply.give(power_supply.maxcharge)

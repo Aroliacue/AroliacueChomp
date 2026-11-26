@@ -4,10 +4,9 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "potato"
 	time_per_sheet = 1152 //same power output, but a 50 sheet stack will last 4 hours at max safe power
-	power_gen = 50000 //watts
+	power_gen = 50 KILOWATTS
 	anchored = TRUE
 
-//Port Start, RS PR #484
 /obj/machinery/power/port_gen/pacman/super/potato/Destroy()
 	. = ..()
 	cut_overlays() // sanity checks
@@ -32,14 +31,12 @@
 		return
 	else	//off and it isn't angry, so we just vibe as 'off'
 		icon_state = initial(icon_state)
-//Port Emd, RS PR #484
 
 // Circuits for the RTGs below
 /obj/item/circuitboard/machine/rtg
 	name = T_BOARD("radioisotope TEG")
 	build_path = /obj/machinery/power/rtg
 	board_type = new /datum/frame/frame_types/machine
-	origin_tech = list(TECH_DATA = 3, TECH_POWER = 3, TECH_PHORON = 3, TECH_ENGINEERING = 3)
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/capacitor = 1,
@@ -48,7 +45,6 @@
 /obj/item/circuitboard/machine/rtg/advanced
 	name = T_BOARD("advanced radioisotope TEG")
 	build_path = /obj/machinery/power/rtg/advanced
-	origin_tech = list(TECH_DATA = 5, TECH_POWER = 5, TECH_PHORON = 5, TECH_ENGINEERING = 5)
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/capacitor = 1,
@@ -60,7 +56,6 @@
 	name = T_BOARD("void generator")
 	build_path = /obj/machinery/power/rtg/abductor
 	board_type = new /datum/frame/frame_types/machine
-	origin_tech = list(TECH_DATA = 8, TECH_POWER = 8, TECH_PHORON = 8, TECH_ENGINEERING = 8)
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/capacitor/hyper = 1)
@@ -70,7 +65,6 @@
 	name = T_BOARD("void generator (hybrid)")
 	build_path = /obj/machinery/power/rtg/abductor/hybrid
 	board_type = new /datum/frame/frame_types/machine
-	origin_tech = list(TECH_DATA = 8, TECH_POWER = 8, TECH_PHORON = 8, TECH_ENGINEERING = 8)
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/capacitor/hyper = 1,
@@ -205,7 +199,7 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "gridchecker_off"
 	name = "capacitor bank"
-	power_gen = 12000
+	power_gen = 12 KILOWATTS
 
 // Void Core, power source for Abductor ships and bases.
 // Provides a lot of power, but tends to explode when mistreated.
@@ -214,7 +208,7 @@
 	icon_state = "core-nocell"
 	desc = "An alien power source that produces energy seemingly out of nowhere."
 	circuit = /obj/item/circuitboard/machine/abductor/core
-	power_gen = 10000
+	power_gen = 10 KILOWATTS
 	irradiate = FALSE // Green energy!
 	can_buckle = FALSE
 	pixel_y = 7
@@ -245,7 +239,7 @@
 		log_and_message_admins("[ADMIN_LOOKUPFLW(Proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.", Proj.firer)
 		asplod()
 
-/obj/machinery/power/rtg/abductor/attack_hand(var/mob/living/user)
+/obj/machinery/power/rtg/abductor/attack_hand(mob/living/user)
 	if(!istype(user) || (. = ..()))
 		return
 
@@ -330,7 +324,7 @@
 	icon_state = "bigdice"
 	bound_width = 64
 	bound_height = 64
-	power_gen = 30000
+	power_gen = 30 KILOWATTS
 	irradiate = FALSE // Green energy!
 	can_buckle = FALSE
 
@@ -365,7 +359,7 @@
 	circuit = /obj/item/circuitboard/machine/reg_d
 	irradiate = FALSE
 	power_gen = 0
-	var/default_power_gen = 1000000	//It's big but it gets adjusted based on what you put into it!!!
+	var/default_power_gen = 1 MEGAWATTS	//It's big but it gets adjusted based on what you put into it!!!
 	var/part_mult = 0
 	var/nutrition_drain = 1
 	pixel_x = -32
@@ -382,7 +376,7 @@
 /obj/machinery/power/rtg/reg/Destroy()
 	. = ..()
 
-/obj/machinery/power/rtg/reg/user_buckle_mob(mob/living/M, mob/user, var/forced = FALSE, var/silent = TRUE)
+/obj/machinery/power/rtg/reg/user_buckle_mob(mob/living/M, mob/user, forced = FALSE, silent = TRUE)
 	. = ..()
 	M.pixel_y = 8
 	M.visible_message(span_notice("\The [M], hops up onto \the [src] and begins running!"))
@@ -423,7 +417,7 @@
 		power_gen = 0
 	update_icon()
 
-/obj/machinery/power/rtg/reg/proc/runner_process(var/mob/living/runner)
+/obj/machinery/power/rtg/reg/proc/runner_process(mob/living/runner)
 	if(runner.stat != CONSCIOUS)
 		unbuckle_mob(runner)
 		runner.visible_message(span_warning("\The [runner], topples off of \the [src]!"))
@@ -438,35 +432,54 @@
 	if(cool_rotations <= 0)
 		cool_rotations = 0.5
 	cool_rotations = default_power_gen / cool_rotations
-	switch(runner.nutrition)
-		if(1000 to INFINITY)	//VERY WELL FED, ZOOM!!!!
-			cool_rotations *= (runner.nutrition * 0.001)
-		if(500 to 1000)	//Well fed!
-			cool_rotations = cool_rotations
-		if(400 to 500)
-			cool_rotations *= 0.9
-		if(300 to 400)
-			cool_rotations *= 0.75
-		if(200 to 300)
-			cool_rotations *= 0.5
-		if(100 to 200)
-			cool_rotations *= 0.25
-		else	//TOO HUNGY IT TIME TO STOP!!!
-			unbuckle_mob(runner)
-			runner.visible_message(span_notice("\The [runner], panting and exhausted hops off of \the [src]!"))
+	if(!isrobot(runner))
+		switch(runner.nutrition)
+			if(1000 to INFINITY)	//VERY WELL FED, ZOOM!!!!
+				cool_rotations *= (runner.nutrition * 0.001)
+			if(500 to 1000)	//Well fed!
+				cool_rotations = cool_rotations
+			if(400 to 500)
+				cool_rotations *= 0.9
+			if(300 to 400)
+				cool_rotations *= 0.75
+			if(200 to 300)
+				cool_rotations *= 0.5
+			if(100 to 200)
+				cool_rotations *= 0.25
+			else	//TOO HUNGY IT TIME TO STOP!!!
+				unbuckle_mob(runner)
+				runner.visible_message(span_notice("\The [runner], panting and exhausted hops off of \the [src]!"))
+		runner.nutrition -= nutrition_drain
+	else
+		var/mob/living/silicon/robot/bot = runner
+		if(!bot.cell)
+			cool_rotations = 0
+			return
+		switch(bot.cell?.charge)
+			if(6000 to INFINITY)	//VERY WELL FED, ZOOM!!!!
+				cool_rotations *= (bot.cell.charge * 0.001)
+			if(4000 to 6000)	//Well fed!
+				cool_rotations = cool_rotations
+			if(3000 to 4000)
+				cool_rotations *= 0.9
+			if(2000 to 3000)
+				cool_rotations *= 0.75
+			if(1000 to 2000)
+				cool_rotations *= 0.5
+			if(1 to 1000)
+				cool_rotations *= 0.25
+			else
+				cool_rotations = 0
+				return // Nope nothing!
+		bot.cell.charge -= 10 // Faster for borgs cause they have more to drain
 	if(part_mult > 1)
 		cool_rotations += (cool_rotations * (part_mult - 1)) / 4
 	power_gen = cool_rotations
-	runner.nutrition -= nutrition_drain
-
-/obj/machinery/power/rtg/reg/emp_act(severity, recursive)
-	return
 
 /obj/item/circuitboard/machine/reg_d
 	name = T_BOARD("D-Type-REG")
 	build_path = /obj/machinery/power/rtg/reg
 	board_type = new /datum/frame/frame_types/machine
-	origin_tech = list(TECH_DATA = 2, TECH_POWER = 4, TECH_ENGINEERING = 4)
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/capacitor = 1)
@@ -475,7 +488,6 @@
 	name = T_BOARD("C-Type-REG")
 	build_path = /obj/machinery/power/rtg/reg/c
 	board_type = new /datum/frame/frame_types/machine
-	origin_tech = list(TECH_DATA = 2, TECH_POWER = 4, TECH_ENGINEERING = 4)
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/capacitor = 1)
@@ -497,7 +509,7 @@
 	bound_width = 64
 	bound_height = 64
 	anchored = TRUE
-	power_gen = 250000
+	power_gen = 250 KILOWATTS
 
 	var/sheet_name = "Phoron Sheets"
 	var/sheet_path = /obj/item/stack/material/phoron
@@ -517,7 +529,7 @@
 
 /obj/machinery/power/port_gen/large_altevian/examine(mob/user)
 	. = ..()
-	. += "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper."
+	. += span_notice("There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper.")
 
 /obj/machinery/power/port_gen/large_altevian/HasFuel()
 	var/needed_sheets = power_output / time_per_sheet
@@ -538,7 +550,7 @@
 	else
 		sheet_left -= needed_sheets
 
-/obj/machinery/power/port_gen/large_altevian/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/power/port_gen/large_altevian/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, sheet_path))
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.get_amount())
@@ -577,7 +589,7 @@
 	desc = "Reacts hydrogen and anti-hydrogen with a phoron moderator to produce near limitless power! The magnetic fields are prone to easily rupturing, so the reactor design never took off."
 	icon = 'icons/am_engine.dmi'
 	icon_state = "core_on"
-	power_gen = 1000000 // 1MW
+	power_gen = 1 MEGAWATTS
 	irradiate = FALSE // Green energy!
 	can_buckle = FALSE
 	plane = ABOVE_MOB_PLANE

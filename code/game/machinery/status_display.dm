@@ -15,6 +15,7 @@
 	plane = TURF_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	name = "status display"
+	desc = "A cheap, mass produced screen linked to command consoles. Used to display alerts, information, or whatever else the bridge secretary decided this time."
 	anchored = TRUE
 	density = FALSE
 	unacidable = TRUE
@@ -169,7 +170,7 @@
 		message2 = ""
 		index2 = 0
 
-/obj/machinery/status_display/proc/display_alert(var/newlevel)
+/obj/machinery/status_display/proc/display_alert(newlevel)
 	remove_display()
 	if(seclevel != newlevel)
 		seclevel = newlevel

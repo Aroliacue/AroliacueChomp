@@ -3,6 +3,8 @@
 	var/module_type
 	var/default_sprite = FALSE
 	var/sprite_flags
+	///What the maximum resize value for the sprite is. By default, this is whatever the server max is (typically 2.0).
+	var/size_limit
 
 	var/sprite_icon
 	var/sprite_icon_state
@@ -39,11 +41,13 @@
 	var/list/sprite_decals = list() // Allow extra decals
 	var/list/sprite_animations = list() // Allows to flick animations
 
+	var/list/hat_offset = list("north" = list(0, -3), "south" = list(0, -3), "east" = list(4, -3), "west" = list(-4, -3))
+
 /// Determines if the borg has the proper flags to show an overlay.
-/datum/robot_sprite/proc/sprite_flag_check(var/flag_to_check)
+/datum/robot_sprite/proc/sprite_flag_check(flag_to_check)
 	return (sprite_flags & flag_to_check)
 
-/datum/robot_sprite/proc/handle_extra_icon_updates(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/handle_extra_icon_updates(mob/living/silicon/robot/ourborg)
 	if(ourborg.resting) //Don't do ANY of the overlay code if we're resting. It just won't look right!
 		return
 	if(sprite_flag_check(ROBOT_HAS_SHIELD_SPEED_SPRITE))
@@ -68,8 +72,8 @@
 			if(istype(thing_to_check, /obj/item/melee/robotic))
 				var/obj/item/melee/robotic/melee = thing_to_check
 				melee.refresh_light(TRUE)
-				if(sprite_flag_check(ROBOT_HAS_MELEE_SPRITE) && melee.weapon_flag_check(COUNTS_AS_ROBOTIC_MELEE))
-					ourborg.add_overlay("[sprite_icon_state]-melee")
+				if(sprite_flag_check(ROBOT_HAS_BATON_SPRITE) && melee.weapon_flag_check(COUNTS_AS_ROBOT_BATON))
+					ourborg.add_overlay("[sprite_icon_state]-baton")
 					continue
 				if(sprite_flag_check(ROBOT_HAS_DAGGER_SPRITE) && melee.weapon_flag_check(COUNTS_AS_ROBOT_DAGGER))
 					ourborg.add_overlay("[sprite_icon_state]-dagger")
@@ -77,32 +81,47 @@
 				if(sprite_flag_check(ROBOT_HAS_BLADE_SPRITE) && melee.weapon_flag_check(COUNTS_AS_ROBOT_BLADE))
 					ourborg.add_overlay("[sprite_icon_state]-blade")
 					continue
+				//Perform generic test last.
+				if(sprite_flag_check(ROBOT_HAS_MELEE_SPRITE) && melee.weapon_flag_check(COUNTS_AS_ROBOTIC_MELEE))
+					ourborg.add_overlay("[sprite_icon_state]-melee")
+					continue
 
 			//Gun Check
 			if(istype(thing_to_check, /obj/item/gun/energy/robotic))
 				var/obj/item/gun/energy/robotic/gun = thing_to_check
-				if(sprite_flag_check(ROBOT_HAS_GUN_SPRITE) && gun.gun_flag_check(COUNTS_AS_ROBOT_GUN))
-					ourborg.add_overlay("[sprite_icon_state]-gun")
-					continue
-				if(sprite_flag_check(ROBOT_HAS_LASER_SPRITE) && gun.gun_flag_check(COUNTS_AS_ROBOT_LASER))
+				if(sprite_flag_check(ROBOT_HAS_LASER_SPRITE) && gun.weapon_flag_check(COUNTS_AS_ROBOT_LASER))
 					ourborg.add_overlay("[sprite_icon_state]-laser")
 					continue
-				if(sprite_flag_check(ROBOT_HAS_TASER_SPRITE) && gun.gun_flag_check(COUNTS_AS_ROBOT_TASER))
+				if(sprite_flag_check(ROBOT_HAS_TASER_SPRITE) && gun.weapon_flag_check(COUNTS_AS_ROBOT_TASER))
 					ourborg.add_overlay("[sprite_icon_state]-taser")
 					continue
-				if(sprite_flag_check(ROBOT_HAS_DISABLER_SPRITE) && gun.gun_flag_check(COUNTS_AS_ROBOT_DISABLER))
+				if(sprite_flag_check(ROBOT_HAS_DISABLER_SPRITE) && gun.weapon_flag_check(COUNTS_AS_ROBOT_DISABLER))
 					ourborg.add_overlay("[sprite_icon_state]-disabler")
+					continue
+				//Perform generic test last.
+				if(sprite_flag_check(ROBOT_HAS_GUN_SPRITE) && gun.weapon_flag_check(COUNTS_AS_ROBOT_GUN))
+					ourborg.add_overlay("[sprite_icon_state]-gun")
 					continue
 	//These are outliers that don't fit the normal sprite flags. These should not be expanded unless absolutely neccessary.
 	if(ourborg.activated_module_type_list(list(/obj/item/pickaxe)))
 		for(var/thing_to_check in ourborg.get_active_modules()) //We look at our active modules. Let's peep!
 			if(istype(thing_to_check, /obj/item/pickaxe))
 				var/obj/item/pickaxe/melee = thing_to_check
+				if(sprite_flag_check(ROBOT_HAS_DRILL_SPRITE) && melee.weapon_flag_check(COUNTS_AS_ROBOT_DRILL))
+					ourborg.add_overlay("[sprite_icon_state]-miningdrill")
+					continue
 				if(sprite_flag_check(ROBOT_HAS_MELEE_SPRITE) && melee.weapon_flag_check(COUNTS_AS_ROBOTIC_MELEE))
 					ourborg.add_overlay("[sprite_icon_state]-melee")
 					continue
+	if(ourborg.activated_module_type_list(list(/obj/item/gun/energy/kinetic_accelerator)))
+		for(var/thing_to_check in ourborg.get_active_modules()) //We look at our active modules. Let's peep!
+			if(istype(thing_to_check, /obj/item/gun/energy/kinetic_accelerator))
+				var/obj/item/gun/energy/kinetic_accelerator/gun = thing_to_check
+				if(sprite_flag_check(ROBOT_HAS_PKA_SPRITE) && gun.weapon_flag_check(COUNTS_AS_ROBOT_PKA))
+					ourborg.add_overlay("[sprite_icon_state]-pka")
+					continue
 
-/datum/robot_sprite/proc/get_belly_overlay(var/mob/living/silicon/robot/ourborg, var/size = 1, var/b_class)
+/datum/robot_sprite/proc/get_belly_overlay(mob/living/silicon/robot/ourborg, size = 1, b_class)
 	//Size
 	if(has_sleeper_light_indicator || belly_light_list.len)
 		if(belly_light_list.len)
@@ -124,7 +143,7 @@
 			return "[sprite_icon_state]-[b_class]-[size]-[sleeperColor]"
 	return "[sprite_icon_state]-[b_class]-[size]"
 
-/datum/robot_sprite/proc/get_belly_resting_overlay(var/mob/living/silicon/robot/ourborg, var/size = 1, var/b_class)
+/datum/robot_sprite/proc/get_belly_resting_overlay(mob/living/silicon/robot/ourborg, size = 1, b_class)
 	if(!(ourborg.rest_style in rest_sprite_options))
 		ourborg.rest_style = "Default"
 	switch(ourborg.rest_style)
@@ -135,12 +154,12 @@
 		else
 			return "[get_belly_overlay(ourborg, size, b_class)]-rest"
 
-/datum/robot_sprite/proc/get_glow_overlay(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/get_glow_overlay(mob/living/silicon/robot/ourborg)
 	if(!ourborg.resting)
 		return "[sprite_icon_state]-glow"
 	return "[get_rest_sprite(ourborg)]-glow"
 
-/datum/robot_sprite/proc/get_eyes_overlay(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/get_eyes_overlay(mob/living/silicon/robot/ourborg)
 	if(!(ourborg.resting && has_rest_sprites))
 		return "[sprite_icon_state]-eyes"
 	else if(ourborg.resting && has_rest_eyes_sprites)
@@ -148,7 +167,7 @@
 	else
 		return
 
-/datum/robot_sprite/proc/get_eye_light_overlay(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/get_eye_light_overlay(mob/living/silicon/robot/ourborg)
 	if(!(ourborg.resting && has_rest_sprites))
 		return "[sprite_icon_state]-lights"
 	else if(ourborg.resting && has_rest_lights_sprites)
@@ -157,7 +176,7 @@
 		return
 
 // This can not use the get_rest_sprite function as it could use belly overlays as decals
-/datum/robot_sprite/proc/get_robotdecal_overlay(var/mob/living/silicon/robot/ourborg, var/type)
+/datum/robot_sprite/proc/get_robotdecal_overlay(mob/living/silicon/robot/ourborg, type)
 	if(LAZYLEN(sprite_decals))
 		if(!ourborg.resting)
 			return "[sprite_icon_state]-[type]"
@@ -170,7 +189,7 @@
 				return "[sprite_icon_state]-[type]-rest"
 
 
-/datum/robot_sprite/proc/get_rest_sprite(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/get_rest_sprite(mob/living/silicon/robot/ourborg)
 	if(!(ourborg.rest_style in rest_sprite_options))
 		ourborg.rest_style = "Default"
 	switch(ourborg.rest_style)
@@ -181,13 +200,13 @@
 		else
 			return "[sprite_icon_state]-rest"
 
-/datum/robot_sprite/proc/get_dead_sprite(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/get_dead_sprite(mob/living/silicon/robot/ourborg)
 	return "[sprite_icon_state]-wreck"
 
-/datum/robot_sprite/proc/get_dead_sprite_overlay(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/get_dead_sprite_overlay(mob/living/silicon/robot/ourborg)
 	return "wreck-overlay"
 
-/datum/robot_sprite/proc/get_open_sprite(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/get_open_sprite(mob/living/silicon/robot/ourborg)
 	if(!ourborg.opened)
 		return
 	if(ourborg.wiresexposed)
@@ -202,10 +221,10 @@
 
 	return
 
-/datum/robot_sprite/proc/handle_extra_customization(var/mob/living/silicon/robot/ourborg)
+/datum/robot_sprite/proc/handle_extra_customization(mob/living/silicon/robot/ourborg)
 	return
 
-/datum/robot_sprite/proc/do_equipment_glamour(var/obj/item/robot_module/module)
+/datum/robot_sprite/proc/do_equipment_glamour(obj/item/robot_module/module)
 	if(!dogborg_sprites)
 		var/obj/item/melee/robotic/jaws/small/small_jaws = locate() in module.modules
 		if(small_jaws)

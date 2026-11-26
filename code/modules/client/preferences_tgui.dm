@@ -57,7 +57,7 @@
 	data["character_profiles"] = create_character_profiles()
 
 	// data["character_preview_view"] = character_preview_view.assigned_map
-	// data["overflow_role"] = SSjob.GetJobType(SSjob.overflow_role).title
+	// data["overflow_role"] = SSjob.get_jobType(SSjob.overflow_role).title
 
 	data["window"] = current_window
 
@@ -153,6 +153,7 @@
 			load_character()
 			client.prefs_vr.load_vore()
 			sanitize_preferences()
+			restore_preview_organs()
 			. = TRUE
 		if("resetslot")
 			if(!isnewplayer(ui.user))
@@ -163,6 +164,7 @@
 				return
 			reset_slot()
 			sanitize_preferences()
+			restore_preview_organs()
 			. = TRUE
 		if("copy")
 			if(!isnewplayer(ui.user))

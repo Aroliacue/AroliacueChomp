@@ -1,3 +1,4 @@
+// TODO: Migrate to SSMapping
 // If you add a more comprehensive system, just untick this file.
 GLOBAL_LIST_EMPTY(z_levels)// Each bit re... haha just kidding this is a list of bools now
 
@@ -12,24 +13,24 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/map_data)
 	return INITIALIZE_HINT_QDEL
 
 // The storage of connections between adjacent levels means some bitwise magic is needed.
-/proc/HasAbove(var/z)
+/proc/HasAbove(z)
 	if(z >= world.maxz || z < 1 || z > length(GLOB.z_levels))
 		return 0
 	return GLOB.z_levels[z]
 
-/proc/HasBelow(var/z)
+/proc/HasBelow(z)
 	if(z > world.maxz || z < 2 || (z-1) > length(GLOB.z_levels))
 		return 0
 	return GLOB.z_levels[z-1]
 
 // Thankfully, no bitwise magic is needed here.
-/proc/GetAbove(var/atom/atom)
+/proc/GetAbove(atom/atom)
 	var/turf/turf = get_turf(atom)
 	if(!turf)
 		return null
 	return HasAbove(turf.z) ? get_step(turf, UP) : null
 
-/proc/GetBelow(var/atom/atom)
+/proc/GetBelow(atom/atom)
 	var/turf/turf = get_turf(atom)
 	if(!turf)
 		return null
@@ -42,7 +43,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/map_data)
 	for(var/level = z, HasAbove(level), level++)
 		. |= level+1
 
-/proc/AreConnectedZLevels(var/zA, var/zB)
+/proc/AreConnectedZLevels(zA, zB)
 	return zA == zB || (zB in GetConnectedZlevels(zA))
 
 /proc/get_zstep(ref, dir)

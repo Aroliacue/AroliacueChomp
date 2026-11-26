@@ -2,7 +2,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0)
 
 
 ////////////////////////////////
-/proc/message_admins(var/msg)
+/proc/message_admins(msg)
 	msg = span_filter_adminlog(span_log_message(span_prefix("ADMIN LOG:") + span_message("[msg]")))
 	//log_admin_private(msg) //log_and_message_admins is for this
 
@@ -13,7 +13,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0)
 					html = msg,
 					confidential = TRUE)
 
-/proc/msg_admin_attack(var/text) //Toggleable Attack Messages
+/proc/msg_admin_attack(text) //Toggleable Attack Messages
 	var/rendered = span_filter_attacklog(span_log_message(span_prefix("ATTACK:") + span_message("[text]")))
 	for(var/client/C in GLOB.admins)
 		if(check_rights_for(C, (R_ADMIN|R_MOD)))
@@ -24,7 +24,7 @@ GLOBAL_VAR_INIT(floorIsLava, 0)
 						html = msg,
 						confidential = TRUE)
 
-/proc/admin_notice(var/message, var/rights)
+/proc/admin_notice(message, rights)
 	for(var/mob/M in GLOB.mob_list)
 		var/C = M.client
 
@@ -125,7 +125,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_HOLDER, "Show Player Panel", m
 			else if(ishuman(player))
 				body += {"<a href='byond://?_src_=holder;[HrefToken()];turn_ai=[REF(player)]'>Make AI</a> |
 					<a href='byond://?_src_=holder;[HrefToken()];turn_robot=[REF(player)]'>Make Robot</a> |
-					<a href='byond://?_src_=holder;[HrefToken()];turn_alien=[REF(player)]'>Make Alien</a>
+					<a href='byond://?_src_=holder;[HrefToken()];turn_alien=[REF(player)]'>Make Alien</a> |
 				"}
 
 			//Simple Animals
@@ -178,32 +178,38 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_HOLDER, "Show Player Panel", m
 
 			body += {"<br><br>
 				"} + span_bold("Rudimentary transformation:") + span_normal("<br>These transformations only create a new mob type and copy stuff over. They do not take into account MMIs and similar mob-specific things. The buttons in 'Transformations' are preferred, when possible.") + {"<br>
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=observer;mob=[REF(player)]'>Observer</a> |
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=observer;mob=[REF(player)]'>Observer</a>
+				<br>
+				\[ Crew: <a href='byond://?_src_=holder;[HrefToken()];simplemake=human;mob=[REF(player)]'>Human</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Unathi;mob=[REF(player)]'>Unathi</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Tajaran;mob=[REF(player)]'>Tajaran</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Skrell;mob=[REF(player)]'>Skrell</a> \]
+				<br>
+				\[ <a href='byond://?_src_=holder;[HrefToken()];simplemake=nymph;mob=[REF(player)]'>Nymph</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species='Diona';mob=[REF(player)]'>Diona</a> \]
+				<br>
 				\[ Xenos: <a href='byond://?_src_=holder;[HrefToken()];simplemake=larva;mob=[REF(player)]'>Larva</a>
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Xenomorph Drone;mob=[REF(player)]'>Drone</a>
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Xenomorph Hunter;mob=[REF(player)]'>Hunter</a>
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Xenomorph Sentinel;mob=[REF(player)]'>Sentinel</a>
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Xenomorph Queen;mob=[REF(player)]'>Queen</a> \] |
-				\[ Crew: <a href='byond://?_src_=holder;[HrefToken()];simplemake=human;mob=[REF(player)]'>Human</a>
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Unathi;mob=[REF(player)]'>Unathi</a>
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Tajaran;mob=[REF(player)]'>Tajaran</a>
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Skrell;mob=[REF(player)]'>Skrell</a> \] | \[
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=nymph;mob=[REF(player)]'>Nymph</a>
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species='Diona';mob=[REF(player)]'>Diona</a> \] |
-				\[ slime: <a href='byond://?_src_=holder;[HrefToken()];simplemake=slime;mob=[REF(player)]'>Baby</a>,
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=human;species=Xenomorph Queen;mob=[REF(player)]'>Queen</a> \]
+				<br>
+				\[ Slime: <a href='byond://?_src_=holder;[HrefToken()];simplemake=slime;mob=[REF(player)]'>Baby</a>
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=adultslime;mob=[REF(player)]'>Adult</a> \]
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=monkey;mob=[REF(player)]'>Monkey</a> |
+				<br>
+				\[ Animals : <a href='byond://?_src_=holder;[HrefToken()];simplemake=monkey;mob=[REF(player)]'>Monkey</a> |
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=robot;mob=[REF(player)]'>Cyborg</a> |
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=cat;mob=[REF(player)]'>Cat</a> |
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=runtime;mob=[REF(player)]'>Runtime</a> |
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=corgi;mob=[REF(player)]'>Corgi</a> |
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=ian;mob=[REF(player)]'>Ian</a> |
 				<a href='byond://?_src_=holder;[HrefToken()];simplemake=crab;mob=[REF(player)]'>Crab</a> |
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=coffee;mob=[REF(player)]'>Coffee</a> |
-				\[ Construct: <a href='byond://?_src_=holder;[HrefToken()];simplemake=constructarmoured;mob=[REF(player)]'>Armoured</a> ,
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=constructbuilder;mob=[REF(player)]'>Builder</a> ,
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=constructwraith;mob=[REF(player)]'>Wraith</a> \]
-				<a href='byond://?_src_=holder;[HrefToken()];simplemake=shade;mob=[REF(player)]'>Shade</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=coffee;mob=[REF(player)]'>Coffee</a> \]
+				<br>
+				\[ Construct: <a href='byond://?_src_=holder;[HrefToken()];simplemake=constructarmoured;mob=[REF(player)]'>Armoured</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=constructbuilder;mob=[REF(player)]'>Builder</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=constructwraith;mob=[REF(player)]'>Wraith</a>
+				<a href='byond://?_src_=holder;[HrefToken()];simplemake=shade;mob=[REF(player)]'>Shade</a> \]
 				<br>
 			"}
 	body += {"<br><br>
@@ -262,7 +268,7 @@ ADMIN_VERB(PlayerNotes, R_ADMIN|R_MOD|R_EVENT|R_DEBUG, "Player Notes", "Access t
 	A.tgui_interact(user)
 
 
-/datum/admins/proc/player_has_info(var/key as text)
+/datum/admins/proc/player_has_info(key as text)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
@@ -378,7 +384,7 @@ ADMIN_VERB(access_news_network, R_ADMIN|R_EVENT, "Access Newscaster Network", "A
 						//dat+="-[MESSAGE.body] <br>"
 						var/pic_data
 						if(MESSAGE.img)
-							user << browse_rsc(MESSAGE.img, "tmp_photo[i].png")
+							send_rsc(user, MESSAGE.img, "tmp_photo[i].png")
 							pic_data+="<img src='tmp_photo[i].png' width = '180'><BR>"
 						dat+= get_newspaper_content(MESSAGE.title, MESSAGE.body, MESSAGE.author,"#d4cec1", pic_data)
 						dat+="<br>"
@@ -493,7 +499,7 @@ ADMIN_VERB(access_news_network, R_ADMIN|R_EVENT, "Access Newscaster Network", "A
 				"} + span_bold("Photo:") + {":
 			"}
 			if(GLOB.news_network.wanted_issue.img)
-				user << browse_rsc(GLOB.news_network.wanted_issue.img, "tmp_photow.png")
+				send_rsc(user, GLOB.news_network.wanted_issue.img, "tmp_photow.png")
 				dat+="<br><img src='tmp_photow.png' width = '180'>"
 			else
 				dat+="None"
@@ -554,7 +560,7 @@ ADMIN_VERB(access_news_network, R_ADMIN|R_EVENT, "Access Newscaster Network", "A
 	popup.open()
 
 /*
-/datum/admins/proc/Secrets(var/datum/admin_secret_category/active_category = null)
+/datum/admins/proc/Secrets(datum/admin_secret_category/active_category = null)
 	if(!check_rights(0))	return
 
 	// Print the header with category selection buttons.
@@ -661,49 +667,40 @@ ADMIN_VERB(announce, R_SERVER|R_ADMIN|R_EVENT, "Announce", "Announce your desire
 	log_admin("Announce: [key_name(user)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/intercom()
-	set category = "Fun.Event Kit"
-	set name = "Intercom Msg"
-	set desc = "Send an intercom message, like an arrivals announcement."
-	if(!check_rights(0))	return
+ADMIN_VERB(intercom, R_ADMIN|R_EVENT, "Intercom Msg", "Send an intercom message, like an arrivals announcement.", ADMIN_CATEGORY_FUN_EVENT_KIT)
+	var/channel = tgui_input_list(user, "Channel for message:","Channel", GLOB.radiochannels)
 
-	var/channel = tgui_input_list(usr, "Channel for message:","Channel", GLOB.radiochannels)
+	if(!channel) //They didn't pick a channel
+		return
 
-	if(channel) //They picked a channel
-		var/sender = tgui_input_text(usr, "Name of sender (max 75):", "Announcement", "Announcement Computer")
+	var/sender = tgui_input_text(user, "Name of sender (max 75):", "Announcement", "Announcement Computer")
 
-		if(sender) //They put a sender
-			sender = sanitize(sender, 75, extra = 0)
-			var/message = tgui_input_text(usr, "Message content (max 500):", "Contents", "This is a test of the announcement system.", multiline = TRUE, prevent_enter = TRUE)
-			var/msgverb = tgui_input_text(usr, "Name of verb (Such as 'states', 'says', 'asks', etc):", "Verb", "says")
-			if(message) //They put a message
-				message = sanitize(message, 500, extra = 0)
-				if(msgverb)
-					msgverb = sanitize(msgverb, 50, extra = 0)
-				else
-					msgverb = "states"
-				GLOB.global_announcer.autosay("[message]", "[sender]", "[channel == "Common" ? null : channel]", states = msgverb) //Common is a weird case, as it's not a "channel", it's just talking into a radio without a channel set.
-				log_admin("Intercom: [key_name(usr)] : [sender]:[message]")
+	if(sender) //They put a sender
+		sender = sanitize(sender, 75, extra = 0)
+		var/message = tgui_input_text(user, "Message content (max 500):", "Contents", "This is a test of the announcement system.", multiline = TRUE, prevent_enter = TRUE)
+		var/msgverb = tgui_input_text(user, "Name of verb (Such as 'states', 'says', 'asks', etc):", "Verb", "says")
+		if(message) //They put a message
+			message = sanitize(message, 500, extra = 0)
+			if(msgverb)
+				msgverb = sanitize(msgverb, 50, extra = 0)
+			else
+				msgverb = "states"
+			GLOB.global_announcer.autosay("[message]", "[sender]", "[channel == "Common" ? null : channel]", states = msgverb) //Common is a weird case, as it's not a "channel", it's just talking into a radio without a channel set.
+			log_admin("Intercom: [key_name(user)] : [sender]:[message]")
 
 	feedback_add_details("admin_verb","IN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/intercom_convo()
-	set category = "Fun.Event Kit"
-	set name = "Intercom Convo"
-	set desc = "Send an intercom conversation, like several uses of the Intercom Msg verb."
-	set waitfor = FALSE //Why bother? We have some sleeps. You can leave tho!
-	if(!check_rights(0))	return
-
-	var/channel = tgui_input_list(usr, "Channel for message:","Channel", GLOB.radiochannels)
+ADMIN_VERB(intercom_convo, R_ADMIN|R_EVENT, "Intercom Convo", "Send an intercom conversation, like several uses of the Intercom Msg verb.", ADMIN_CATEGORY_FUN_EVENT_KIT)
+	var/channel = tgui_input_list(user, "Channel for message:","Channel", GLOB.radiochannels)
 
 	if(!channel) //They picked a channel
 		return
 
-	var/speech_verb = tgui_alert(usr, "What speech verb to use for the conversation?", "Type", list("states", "says"))
+	var/speech_verb = tgui_alert(user, "What speech verb to use for the conversation?", "Type", list("states", "says"))
 	if(!speech_verb)
 		return
 
-	to_chat(usr, span_notice(span_bold("Intercom Convo Directions") + "<br>Start the conversation with the sender, a pipe (|), and then the message on one line. Then hit enter to \
+	to_chat(user, span_notice(span_bold("Intercom Convo Directions") + "<br>Start the conversation with the sender, a pipe (|), and then the message on one line. Then hit enter to \
 		add another line, and type a (whole) number of seconds to pause between that message, and the next message, then repeat the message syntax up to 20 times. For example:<br>\
 		--- --- ---<br>\
 		Some Guy|Hello guys, what's up?<br>\
@@ -715,24 +712,25 @@ ADMIN_VERB(announce, R_SERVER|R_ADMIN|R_EVENT, "Announce", "Announce your desire
 		The above will result in those messages playing, with a 5 second gap between each. Maximum of 20 messages allowed."))
 
 	var/list/decomposed
-	var/message = tgui_input_text(usr,"See your chat box for instructions. Keep a copy elsewhere in case it is rejected when you click OK.", "Input Conversation", "", multiline = TRUE, prevent_enter = TRUE)
+	var/message = tgui_input_text(user, "See your chat box for instructions. Keep a copy elsewhere in case it is rejected when you click OK.", "Input Conversation", "", multiline = TRUE, prevent_enter = TRUE)
 
 	if(!message)
 		return
 
 	//Split on pipe or \n
 	decomposed = splittext(message,regex("\\||$","m"))
-	decomposed += "0" //Tack on a final 0 sleep to make 3-per-message evenly
 
 	//Time to find how they screwed up.
 	//Wasn't the right length
-	if((decomposed.len) % 3) //+1 to accomidate the lack of a wait time for the last message
-		to_chat(usr, span_warning("You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds."))
+	if((decomposed.len) % 3)
+		to_chat(user, span_warning("You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds."))
 		return
+	decomposed.Remove("") //ancient black magic.
+	decomposed += 0 //Add a final wait time for the final message.
 
 	//Too long a conversation
 	if((decomposed.len / 3) > 20)
-		to_chat(usr, span_warning("This conversation is too long! 20 messages maximum, please."))
+		to_chat(user, span_warning("This conversation is too long! 20 messages maximum, please."))
 		return
 
 	//Missed some sleeps, or sanitized to nothing.
@@ -740,29 +738,29 @@ ADMIN_VERB(announce, R_SERVER|R_ADMIN|R_EVENT, "Announce", "Announce your desire
 
 		//Sanitize sender
 		var/clean_sender = sanitize(decomposed[i])
-		if(!clean_sender)
-			to_chat(usr, span_warning("One part of your conversation was not able to be sanitized. It was the sender of the [(i+2)/3]\th message."))
+		if(!istext(clean_sender))
+			to_chat(user, span_warning("One part of your conversation was not able to be sanitized. It was the sender of the [(i+2)/3]\th message."))
 			return
 		decomposed[i] = clean_sender
 
 		//Sanitize message
 		var/clean_message = sanitize(decomposed[++i])
-		if(!clean_message)
-			to_chat(usr, span_warning("One part of your conversation was not able to be sanitized. It was the body of the [(i+2)/3]\th message."))
+		if(!istext(clean_message))
+			to_chat(user, span_warning("One part of your conversation was not able to be sanitized. It was the body of the [(i+2)/3]\th message."))
 			return
 		decomposed[i] = clean_message
 
 		//Sanitize wait time
 		var/clean_time = text2num(decomposed[++i])
 		if(!isnum(clean_time))
-			to_chat(usr, span_warning("One part of your conversation was not able to be sanitized. It was the wait time after the [(i+2)/3]\th message."))
+			to_chat(user, span_warning("One part of your conversation was not able to be sanitized. It was the wait time after the [(i+2)/3]\th message."))
 			return
 		if(clean_time > 60)
-			to_chat(usr, span_warning("Max 60 second wait time between messages for sanity's sake please."))
+			to_chat(user, span_warning("Max 60 second wait time between messages for sanity's sake please."))
 			return
 		decomposed[i] = clean_time
 
-	log_admin("Intercom convo started by: [key_name(usr)] : [sanitize(message)]")
+	log_admin("Intercom convo started by: [key_name(user)] : [sanitize(message)]")
 	feedback_add_details("admin_verb","IN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	//Sanitized AND we still have a chance to send it? Wow!
@@ -935,7 +933,7 @@ ADMIN_VERB(adrev, R_SERVER, "Toggle Revive", "Toggle admin revives.", ADMIN_CATE
 	message_admins(span_blue("Toggled reviving to [CONFIG_GET(flag/allow_admin_rev)]."))
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
+/datum/admins/proc/unprison(mob/M in GLOB.mob_list)
 	set category = "Admin.Moderation"
 	set name = "Unprison"
 	if (M.z == 2)
@@ -951,7 +949,7 @@ ADMIN_VERB(adrev, R_SERVER, "Toggle Revive", "Toggle admin revives.", ADMIN_CATE
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
-/proc/is_special_character(var/character) // returns 1 for special characters and 2 for heroes of gamemode
+/proc/is_special_character(character) // returns 1 for special characters and 2 for heroes of gamemode
 	if(!SSticker|| !SSticker.mode)
 		return 0
 	var/datum/mind/M
@@ -1231,7 +1229,7 @@ ADMIN_VERB(toggleguests, R_HOST, "Toggle guests", "Guests can't enter.", ADMIN_C
 
 //Returns 1 to let the dragdrop code know we are trapping this event
 //Returns 0 if we don't plan to trap the event
-/datum/admins/proc/cmd_ghost_drag(var/mob/observer/dead/frommob, var/mob/living/tomob)
+/datum/admins/proc/cmd_ghost_drag(mob/observer/dead/frommob, mob/living/tomob)
 	if(!istype(frommob))
 		return //Extra sanity check to make sure only observers are shoved into things
 
@@ -1330,7 +1328,7 @@ ADMIN_VERB(sendFax, R_ADMIN|R_MOD|R_EVENT, "Send Fax", "Sends a fax to this mach
 
 /datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 
-/datum/admins/proc/faxCallback(var/obj/item/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
+/datum/admins/proc/faxCallback(obj/item/paper/admin/P, obj/machinery/photocopier/faxmachine/destination)
 	var/customname = tgui_input_text(src.owner, "Pick a title for the report", "Title")
 
 	P.name = "[P.origin] - [customname]"
@@ -1395,17 +1393,12 @@ ADMIN_VERB(sendFax, R_ADMIN|R_MOD|R_EVENT, "Send Fax", "Sends a fax to this mach
 		faxreply = null
 	return
 
-/datum/admins/proc/set_uplink(mob/living/carbon/human/human_mob)
-	set category = "Debug.Events"
-	set name = "Set Uplink"
-	set desc = "Allows admins to set up an uplink on a character. This will be required for a character to use telecrystals."
-	set popup_menu = FALSE
+ADMIN_VERB(set_uplink, R_ADMIN|R_DEBUG, "Set Uplink", "Allows admins to set up an uplink on a character. This will be required for a character to use telecrystals.", ADMIN_CATEGORY_DEBUG_EVENTS)
+	var/mob/living/carbon/human/traitor_human = tgui_input_list(user, "Select whom to give an uplink.", "Set uplink", GLOB.human_mob_list)
+	if(!traitor_human)
+		return
 
-	if(check_rights(R_ADMIN|R_DEBUG))
-		GLOB.traitors.spawn_uplink(human_mob)
-		human_mob.mind.tcrystals = DEFAULT_TELECRYSTAL_AMOUNT
-		human_mob.mind.accept_tcrystals = 1
-		var/msg = "[key_name(usr)] has given [human_mob.ckey] an uplink."
-		message_admins(msg)
-	else
-		to_chat(usr, "You do not have access to this command.")
+	GLOB.traitors.spawn_uplink(traitor_human)
+	traitor_human.mind.tcrystals = DEFAULT_TELECRYSTAL_AMOUNT
+	traitor_human.mind.accept_tcrystals = 1
+	message_admins("[key_name(usr)] has given [traitor_human.ckey] an uplink.")

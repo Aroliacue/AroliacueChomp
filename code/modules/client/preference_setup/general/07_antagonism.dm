@@ -30,7 +30,7 @@
 	if(!pref.antag_vis) pref.antag_vis = "Hidden"
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/basic_antagonism/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/general/basic_antagonism/copy_to_mob(mob/living/carbon/human/character)
 	character.exploit_record = pref.exploit_record
 	character.antag_faction = pref.antag_faction
 	character.antag_vis = pref.antag_vis
@@ -58,7 +58,7 @@
 	data["pai_emotions"] = GLOB.pai_emotions
 
 	var/datum/pai_sprite/sprite_datum = SSpai.chassis_data(pai_chassis)
-	if(sprite_datum)
+	if(sprite_datum && SSticker.HasRoundStarted())
 		var/datum/asset/spritesheet_batched/pai_icons/spritesheet = get_asset_datum(/datum/asset/spritesheet_batched/pai_icons)
 		data["pai_sprite_datum_class"] = sanitize_css_class_name("[sprite_datum.type]")
 		data["pai_sprite_datum_size"] = spritesheet.icon_size_id(data["pai_sprite_datum_class"] + "S") // just get the south icon's size, the rest will be the same

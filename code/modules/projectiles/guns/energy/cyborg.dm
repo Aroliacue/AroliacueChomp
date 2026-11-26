@@ -1,24 +1,11 @@
 /// This file PRIMARILY contains guns for borgs. The key word being PRIMARILY.
 /// Some things are included in here for relevence's sake (like the dogborg blade)
 
-
-/obj/item/gun/energy/robotic/proc/gun_flag_check(var/flag_to_check) //Checks for the flag of the gun.
-	return (borg_flags & flag_to_check)
-
-/obj/item/melee/robotic/proc/weapon_flag_check(var/flag_to_check) //Checks for the flag of the gun.
-	return (borg_flags & flag_to_check)
-
-// THESE ARE OUTLIERS THAT SHOULD BE INCLUDED IN /MELEE BUT ARE SO HARDCODED THAT DOING SUCH WOULD BE A NIGHTMARE.
-// THIS LIST SHOULD BE SHORT AND ONLY INCLUDE THINGS THAT ARE ABSOLUTELY NECESSARY.
-/obj/item/pickaxe/proc/weapon_flag_check(var/flag_to_check) //Checks for the flag of the gun.
-	return (borg_flags & flag_to_check)
-
-
 /// The base gun types. Build off these four.
 /obj/item/gun/energy/robotic
 	name = "Cybernetic Gun"
 	desc = "A gun commonly used by cyborgs and other robotic lifeforms to stun"
-	var/borg_flags = COUNTS_AS_ROBOT_GUN //We add flags to this!
+	borg_flags = COUNTS_AS_ROBOT_GUN //We add flags to this!
 	self_recharge = 1
 	use_external_power = 1
 	projectile_type = /obj/item/projectile/beam/lasertag //This is the base gun and should never be used.
@@ -48,10 +35,7 @@
 	charge_cost = 240
 	recharge_time = 10
 
-
-
 /// Variant gun types
-
 
 /// Tasers
 /obj/item/gun/energy/robotic/taser/xeno
@@ -146,7 +130,7 @@
 	desc = "A robotic weapon of some sort."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "swordtail"
-	var/borg_flags = COUNTS_AS_ROBOTIC_MELEE
+	borg_flags = COUNTS_AS_ROBOTIC_MELEE
 
 /obj/item/melee/robotic/jaws
 	icon = 'icons/mob/dogborg_vr.dmi'
@@ -154,6 +138,8 @@
 	throwforce = 0
 	w_class = ITEMSIZE_NORMAL
 	pry = 1
+	edge = TRUE
+	sharp = TRUE
 	tool_qualities = list(TOOL_CROWBAR)
 
 /obj/item/melee/robotic/jaws/big
@@ -208,6 +194,7 @@
 				force = 30
 				armor_penetration = 25
 				defend_chance = 15
+				borg_flags = COUNTS_AS_ROBOTIC_MELEE | COUNTS_AS_ROBOT_DAGGER
 			else
 				name = "self defense knife"
 				icon = 'icons/obj/tools_robot.dmi'
@@ -218,6 +205,7 @@
 				force = 15
 				armor_penetration = 0
 				defend_chance = 5
+				borg_flags = COUNTS_AS_ROBOTIC_MELEE | COUNTS_AS_ROBOT_DAGGER
 		update_icon()
 
 
@@ -245,11 +233,11 @@
 		return TRUE
 	return null
 
-/obj/item/melee/robotic/borg_combat_shocker/attack(mob/M, mob/user)
+/obj/item/melee/robotic/borg_combat_shocker/attack(mob/living/M, mob/living/user, target_zone, attack_modifier)
 	deductcharge(600)
 	return ..()
 
-/obj/item/melee/robotic/borg_combat_shocker/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/robotic/borg_combat_shocker/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	if(isrobot(target))
 		return ..()
 
@@ -373,7 +361,7 @@
 	Striking a lesser robotic entity will compel it to attack you, as well.  It also does extra burn damage to robotic entities, but it does \
 	very little damage to purely organic targets."
 
-/obj/item/melee/robotic/blade/ionic/afterattack(var/atom/movable/AM, var/mob/living/user, var/proximity)
+/obj/item/melee/robotic/blade/ionic/afterattack(atom/movable/AM, mob/living/user, proximity)
 	if(istype(AM, /obj) && proximity)
 		// EMP stuff.
 		var/obj/O = AM
@@ -382,7 +370,7 @@
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
 	return ..()
 
-/obj/item/melee/robotic/blade/ionic/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/robotic/blade/ionic/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	. = ..()
 	if(target.isSynthetic())
 		// Do some extra damage.  Not a whole lot more since emp_act() is pretty nasty on FBPs already.
@@ -418,14 +406,13 @@
 	w_class = ITEMSIZE_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
-	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
 	var/stunforce = 0
 	var/agonyforce = 60
 	var/hitcost = 500
 	var/status = 0 //Off by default.
 	var/lightcolor = "#FF6A00"
-	borg_flags = COUNTS_AS_ROBOTIC_MELEE
+	borg_flags = COUNTS_AS_ROBOT_BATON | COUNTS_AS_ROBOTIC_MELEE
 
 /obj/item/melee/robotic/baton/update_icon()
 	if(status)
@@ -468,12 +455,12 @@
 		return TRUE
 	return null
 
-/obj/item/melee/robotic/baton/attack(mob/M, mob/user)
+/obj/item/melee/robotic/baton/attack(mob/living/M, mob/living/user, target_zone, attack_modifier)
 	if(status)
 		deductcharge(hitcost)
 	return ..()
 
-/obj/item/melee/robotic/baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/robotic/baton/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	if(isrobot(target))
 		return ..()
 
@@ -528,7 +515,7 @@
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
 
-/obj/item/melee/robotic/baton/shocker/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/melee/robotic/baton/shocker/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	..(target, user, hit_zone)
 	if(target.has_AI())
 		target.taunt(user)
@@ -544,7 +531,7 @@
 	hitcost = 48	//Less zap for less cost
 
 
-/obj/item/melee/robotic/baton/slime/attack(mob/living/L, mob/user, hit_zone)
+/obj/item/melee/robotic/baton/slime/attack(mob/living/L, mob/living/user, target_zone, attack_modifier)
 	if(!istype(L))
 		return ..()
 

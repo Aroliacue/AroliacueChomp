@@ -257,7 +257,7 @@
 		if(!M.ckey)	//sanity
 			to_chat(usr, span_filter_adminlog("This mob has no ckey"))
 			return
-		if(!GLOB.job_master)
+		if(!SSjob)
 			to_chat(usr, span_filter_adminlog("Job Master has not been setup!"))
 			return
 
@@ -278,7 +278,7 @@
 		jobs += "<tr align='center' bgcolor='ccccff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -298,7 +298,7 @@
 		jobs += "<tr bgcolor='ffddf0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=securitydept;jobban4=\ref[M]'>Security Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -318,7 +318,7 @@
 		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=engineeringdept;jobban4=\ref[M]'>Engineering Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -338,7 +338,7 @@
 		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=cargodept;jobban4=\ref[M]'>Cargo Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -358,7 +358,7 @@
 		jobs += "<tr bgcolor='ffeef0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=medicaldept;jobban4=\ref[M]'>Medical Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -378,7 +378,7 @@
 		jobs += "<tr bgcolor='e79fff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -398,7 +398,7 @@
 		jobs += "<tr bgcolor='ebb8fc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=explorationdept;jobban4=\ref[M]'>Exploration Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -422,7 +422,7 @@
 		jobs += "<tr bgcolor='00ffff'><th colspan='[length(offmap_jobs)]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=offmapdept;jobban4=\ref[M]'>Offmap Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in offmap_jobs)
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -442,7 +442,7 @@
 		jobs += "<tr bgcolor='dddddd'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=civiliandept;jobban4=\ref[M]'>Civilian Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -467,7 +467,7 @@
 		jobs += "<tr bgcolor='ccffcc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))]'><a href='byond://?src=\ref[src];[HrefToken()];jobban3=nonhumandept;jobban4=\ref[M]'>Synthetic Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 			if(!jobPos)	continue
-			var/datum/job/job = GLOB.job_master.GetJob(jobPos)
+			var/datum/job/job = SSjob.get_job(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -547,7 +547,7 @@
 				tgui_alert_async(usr, "You cannot perform this action. You must be of a higher administrative rank!")
 				return
 
-		if(!GLOB.job_master)
+		if(!SSjob)
 			to_chat(usr, span_filter_adminlog("Job Master has not been setup!"))
 			return
 
@@ -557,63 +557,63 @@
 			if("commanddept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("securitydept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("engineeringdept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("cargodept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("medicaldept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("sciencedept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("explorationdept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("offmapdept")
 				for(var/dept in GLOB.offmap_departments)
 					for(var/jobPos in SSjob.get_job_titles_in_department(dept))
 						if(!jobPos)	continue
-						var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+						var/datum/job/temp = SSjob.get_job(jobPos)
 						if(!temp) continue
 						joblist += temp.title
 			if("civiliandept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("nonhumandept")
 				joblist += "pAI"
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 					if(!jobPos)	continue
-					var/datum/job/temp = GLOB.job_master.GetJob(jobPos)
+					var/datum/job/temp = SSjob.get_job(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			else
@@ -841,7 +841,7 @@
 		if(istext(mute_type))	mute_type = text2num(mute_type)
 		if(!isnum(mute_type))	return
 
-		cmd_admin_mute(M, mute_type, usr)
+		cmd_admin_mute(M, mute_type, FALSE, usr)
 
 	else if(href_list["c_mode"])
 		if(!check_rights(R_ADMIN|R_EVENT))	return
@@ -1235,10 +1235,9 @@
 		var/y = text2num(href_list["Y"])
 		var/z = text2num(href_list["Z"])
 
-		var/client/C = usr.client
 		if(!isobserver(usr))
 			SSadmin_verbs.dynamic_invoke_verb(usr.client, /datum/admin_verb/admin_ghost)
-		C.jumptocoord(x,y,z)
+		SSadmin_verbs.dynamic_invoke_verb(usr.client, /datum/admin_verb/jumptocoord, x, y, z)
 
 	else if(href_list["viewruntime"])
 		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
@@ -1358,19 +1357,26 @@
 			to_chat(usr, span_filter_adminlog("This can only be used on instances of type /mob/living/"))
 			return
 
+		if(!L.CanObtainCentcommMessage())
+			to_chat(usr, span_warning("The person you are trying to contact is not wearing a headset"))
+			return
+		message_admins("[key_name_admin(usr)] has started replying to Emergency message.")
+
 		if(L.can_centcom_reply())
 			var/input = tgui_input_text(src.owner, "Please enter a message to reply to [key_name(L)] via their headset.","Outgoing message from CentCom", "", MAX_MESSAGE_LEN)
-			if(!input)		return
+			if(!input)
+				message_admins("[key_name_admin(usr)] has cancelled their reply to Emergency message.")
+				return
 
 			to_chat(src.owner, span_filter_adminlog("You sent [input] to [L] via a secure channel."))
 			log_admin("[src.owner] replied to [key_name(L)]'s CentCom message with the message [input].")
 			message_admins("[src.owner] replied to [key_name(L)]'s CentCom message with: \"[input]\"")
 			if(!isAI(L))
 				to_chat(L, span_info("You hear something crackle in your headset for a moment before a voice speaks."))
-			to_chat(L, span_info("Please stand by for a message from Central Command."))
+			to_chat(L, span_info("Please stand by for a message from " + span_bold(span_blue("Central Command")) + "."))
 			to_chat(L, span_info("Message as follows."))
 			to_chat(L, span_notice("[input]"))
-			to_chat(L, span_info("Message ends."))
+			to_chat(L, span_info("End of transmission."))
 		else
 			to_chat(src.owner, span_filter_adminlog("The person you are trying to contact does not have functional radio equipment."))
 
@@ -1384,13 +1390,21 @@
 			to_chat(usr, span_filter_adminlog("The person you are trying to contact is not wearing a headset"))
 			return
 
+		message_admins("[key_name_admin(usr)] has started replying to Syndicate Emergency message.")
+
 		var/input = tgui_input_text(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from a shadowy figure...", "", MAX_MESSAGE_LEN)
-		if(!input)	return
+		if(!input)
+			message_admins("[key_name_admin(usr)] has cancelled their reply to Syndicate Emergency message.")
+			return
 
 		to_chat(src.owner, span_filter_adminlog("You sent [input] to [H] via a secure channel."))
 		log_admin("[src.owner] replied to [key_name(H)]'s illegal message with the message [input].")
-		to_chat(H, "<span class='filter_notice'>You hear something crackle in your headset for a moment before a voice speaks.  \
-					\"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"</span>")
+		if(!isAI(H))
+			to_chat(H, span_filter_notice("You hear something crackle in your headset for a moment before a voice speaks."))
+		to_chat(H, span_info("Please stand by for a message from " + span_bold(span_italics(span_red("Syndicate"))) + "."))
+		to_chat(H, span_info("Message as follows, agent."))
+		to_chat(H, span_boldnotice("[input]"))
+		to_chat(H, span_info("End of transmission."))
 
 	else if(href_list["AdminFaxView"])
 		var/obj/item/fax = locate(href_list["AdminFaxView"])
@@ -1811,15 +1825,15 @@
 /atom/proc/extra_admin_link()
 	return
 
-/mob/extra_admin_link(var/source)
+/mob/extra_admin_link(source)
 	if(client && eyeobj)
 		return "|<A href='byond://?[source];[HrefToken(TRUE)];adminplayerobservejump=\ref[eyeobj]'>EYE</A>"
 
-/mob/observer/dead/extra_admin_link(var/source)
+/mob/observer/dead/extra_admin_link(source)
 	if(mind && mind.current)
 		return "|<A href='byond://?[source];[HrefToken(TRUE)];adminplayerobservejump=\ref[mind.current]'>BDY</A>"
 
-/proc/admin_jump_link(var/atom/target, var/source)
+/proc/admin_jump_link(atom/target, source)
 	if(!target) return
 	// The way admin jump links handle their src is weirdly inconsistent...
 	if(istype(source, /datum/admins))
