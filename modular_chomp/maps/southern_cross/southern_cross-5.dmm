@@ -298,6 +298,16 @@
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
 /area/surface/outpost/civilian/sauna)
+"aE" = (
+/obj/structure/table/steel,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "aF" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -527,6 +537,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/airlock/right_three)
+"bc" = (
+/obj/structure/table/steel,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "bd" = (
 /obj/machinery/atmospherics/omni/mixer{
 	active_power_usage = 7500;
@@ -686,16 +706,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/civilian/fishing)
-"bs" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/computer/crew{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "bt" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -912,6 +922,12 @@
 /obj/item/paicard,
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/civilian/pool)
+"bT" = (
+/obj/machinery/vending/exploration_misc{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "bU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/blue{
@@ -943,17 +959,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/laundry)
-"bX" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
-/obj/effect/floor_decal/borderfloorwhite/corner2,
-/obj/effect/floor_decal/corner/paleblue/bordercorner2,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/closet/l3closet/scientist,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "bY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -1256,14 +1261,13 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/emergency_storage/two)
 "cC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/table/steel,
+/obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "cD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -1446,7 +1450,6 @@
 /turf/simulated/floor/water/deep/pool,
 /area/surface/outpost/civilian/pool)
 "cU" = (
-/obj/machinery/mineral/equipment_vendor/survey,
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
@@ -1481,23 +1484,6 @@
 /obj/effect/floor_decal/corner/white/bordercorner,
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/laundry)
-"cX" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/obj/machinery/door/window/brigdoor/westleft{
-	name = "Medical Supplies";
-	req_access = null;
-	req_one_access = list(5,43)
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "cY" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Exploration Prep";
@@ -1565,27 +1551,11 @@
 /turf/simulated/floor/plating/sif/planetuse,
 /area/surface/outpost/engineering/atmos_room)
 "de" = (
-/obj/machinery/vending/medical{
+/obj/machinery/vending/exploration_pilot{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/machinery/status_display{
-	pixel_x = -32
-	},
-/obj/machinery/camera/network/main_outpost{
-	c_tag = "MO - Search and Rescue Port"
-	},
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "df" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -2134,48 +2104,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/right_upper)
-"eg" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 1
-	},
-/obj/structure/table/glass,
-/obj/item/storage/firstaid/regular{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = -5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = -5;
-	pixel_y = -5
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "eh" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock{
@@ -2916,9 +2844,6 @@
 "fx" = (
 /turf/simulated/floor/tiled,
 /area/surface/outpost/security)
-"fy" = (
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "fz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3254,15 +3179,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/surface/outpost/main/dorms/dorm_1)
-"gg" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "gh" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 1
@@ -3289,8 +3205,11 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/right_upper)
 "gj" = (
-/turf/simulated/wall/r_wall,
-/area/surface/outpost/main/search_and_rescue)
+/obj/machinery/vending/exploration_fieldmedic{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "gk" = (
 /turf/simulated/wall/r_wall,
 /area/surface/outpost/main/corridor/left_upper)
@@ -3533,6 +3452,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/gym)
+"gN" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "gO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3592,11 +3526,6 @@
 	},
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outpost/engineering/atmos_room)
-"gS" = (
-/obj/structure/closet/crate/freezer/rations,
-/obj/effect/floor_decal/industrial/outline,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/corridor/right_upper)
 "gT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -3633,12 +3562,6 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/reactor_smes)
 "gX" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/white/bordercorner{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -3723,20 +3646,12 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/mining_main)
 "hh" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = newlist();
-	req_one_access = list(43,67)
-	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
 	},
-/obj/item/gun/energy/locked/phasegun/pistol,
-/obj/item/gun/energy/locked/phasegun/pistol,
-/obj/item/gun/energy/locked/phasegun/pistol,
-/obj/item/gun/energy/locked/phasegun/pistol,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
@@ -3750,10 +3665,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/main/exploration)
 "hi" = (
@@ -4031,6 +3942,15 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/surface/outpost/mining_main/refinery)
+"hE" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "hF" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -4634,6 +4554,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor)
+"iP" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 2
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2,
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "iQ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -4650,9 +4579,6 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/airlock/left_two)
 "iR" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -4732,15 +4658,6 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor)
 "iY" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/white/bordercorner{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/blue{
@@ -4748,7 +4665,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
-/area/surface/outpost/main/corridor/right_upper)
+/area/surface/outpost/main/exploration)
 "iZ" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -5749,21 +5666,6 @@
 /obj/structure/reagent_dispensers/water_cooler/full,
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/gym)
-"kK" = (
-/obj/machinery/sleep_console{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/surface/outpost/main/search_and_rescue)
 "kL" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/cable/heavyduty{
@@ -6242,6 +6144,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/civilian/smes)
+"lH" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "lI" = (
 /obj/effect/step_trigger/teleporter/bridge/west_to_east,
 /obj/structure/railing/grey{
@@ -6327,15 +6244,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/surface/outpost/mining_main/tools)
-"lR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "lS" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
@@ -6557,6 +6465,24 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_1)
+"mp" = (
+/obj/structure/sign/department/armory{
+	pixel_y = 32
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "mq" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -6656,8 +6582,6 @@
 	dir = 10
 	},
 /obj/machinery/light,
-/obj/structure/closet/secure_closet/pilot,
-/obj/item/cataloguer/compact,
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/exploration)
 "my" = (
@@ -6848,6 +6772,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/surface/outpost/main/dorms/dorm_4)
+"mR" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "mS" = (
 /obj/machinery/door/airlock/glass_external{
 	autoclose = 0;
@@ -7002,6 +6935,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/security/maa)
+"ne" = (
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "nf" = (
 /obj/machinery/camera/emp_proof{
 	c_tag = "ENG - Outpost Auxiliary Room";
@@ -7176,10 +7115,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/reactor_smes)
-"nv" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "nw" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/surface/outpost/main/tcomm)
@@ -7614,12 +7549,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/mining_main)
-"om" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/item/clothing/mask/gas/half,
-/obj/item/cataloguer,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/exploration)
 "on" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7627,12 +7556,9 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor)
 "oo" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/item/pickaxe,
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/cataloguer,
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/main/exploration)
 "op" = (
@@ -8005,11 +7931,13 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/laundry)
 "pd" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
-/turf/simulated/floor/plating,
-/area/surface/outpost/main/search_and_rescue)
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Exploration Prep";
+	req_access = null;
+	req_one_access = list(43,67)
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "pe" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -8279,20 +8207,11 @@
 /turf/simulated/mineral/ignore_mapgen/sif,
 /area/surface/outside/plains/mountains)
 "pD" = (
-/obj/structure/table/rack/shelf,
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
-	},
-/obj/item/tank/oxygen{
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/tank/oxygen{
-	pixel_x = 1;
-	pixel_y = -5
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -8372,9 +8291,6 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/surface/outpost/civilian/fishing)
-"pN" = (
-/turf/simulated/wall,
-/area/surface/outpost/main/search_and_rescue)
 "pO" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -8641,28 +8557,7 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/surface/outpost/engineering/monitoring)
-"ql" = (
-/obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/structure/closet/secure_closet/medical_wall{
-	name = "O- Blood Locker";
-	pixel_x = 32
-	},
-/obj/machinery/atmospherics/pipe/simple/visible,
-/obj/item/reagent_containers/blood/OPlus,
-/obj/item/reagent_containers/blood/OPlus,
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "qm" = (
-/obj/structure/table/bench/standard,
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/main/exploration)
 "qn" = (
@@ -9279,15 +9174,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outpost/civilian/sauna)
-"rv" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "rw" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 9
@@ -9318,24 +9204,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/auxiliary_storage)
-"rz" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 8
-	},
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/paleblue/bordercorner2{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "rA" = (
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
@@ -9785,22 +9653,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/right_lower)
-"sw" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/surface/outpost/main/search_and_rescue)
 "sx" = (
-/obj/structure/closet/secure_closet/sar,
-/obj/item/storage/pill_bottle/spaceacillin,
-/obj/item/roller/adv,
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
+/obj/machinery/vending/exploration_armor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "sy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -10206,9 +10064,14 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/reactor_smes)
 "tc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/obj/effect/landmark/start{
+	name = "Explorer"
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "td" = (
 /obj/structure/table/rack,
 /obj/structure/window/basic{
@@ -10245,19 +10108,11 @@
 /turf/simulated/floor/plating/sif/planetuse,
 /area/surface/outside/plains/outpost)
 "tg" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
-/obj/effect/floor_decal/borderfloorwhite/corner2{
-	dir = 9
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 8
 	},
-/obj/effect/floor_decal/corner/paleblue/bordercorner2{
-	dir = 9
-	},
-/obj/structure/table/glass,
-/obj/machinery/recharger,
-/obj/item/tool/screwdriver,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "th" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/white/border,
@@ -10327,6 +10182,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/exploration)
+"to" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Exploration Prep";
+	req_access = null;
+	req_one_access = list(43,67);
+	dir = 2
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration/containment)
 "tp" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/floor/tiled/monotile,
@@ -10365,6 +10229,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/left_lower)
+"ts" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "tt" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -25
@@ -10793,12 +10666,6 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/atmos_room)
 "uc" = (
-/obj/structure/closet/secure_closet/guncabinet/phase{
-	name = "phase weapon cabinet";
-	req_access = newlist();
-	req_one_access = list(43,67)
-	},
-/obj/item/clothing/accessory/holster/hip,
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
@@ -11172,16 +11039,6 @@
 	},
 /turf/simulated/floor/water/deep/ocean,
 /area/surface/outside/river/indalsalven)
-"uN" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "uO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/wingrille_spawn/reinforced_phoron,
@@ -11564,6 +11421,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/mining_main/refinery)
+"vB" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "vC" = (
 /obj/machinery/atmospherics/unary/heat_exchanger{
 	dir = 4
@@ -11590,29 +11452,17 @@
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outside/plains/outpost)
 "vE" = (
-/obj/structure/table/steel,
-/obj/structure/closet/secure_closet/medical_wall/pills{
-	pixel_y = 32
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
 	},
-/obj/item/storage/pill_bottle/spaceacillin,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
 	},
-/obj/machinery/light_switch{
-	pixel_x = -22;
-	pixel_y = 12
-	},
-/obj/random/medical/pillbottle,
-/obj/structure/cable/blue{
-	icon_state = "0-4"
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 4
+/obj/machinery/alarm{
+	pixel_y = 23
 	},
 /turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
+/area/surface/outpost/main/exploration)
 "vF" = (
 /obj/structure/table,
 /turf/simulated/floor/plating,
@@ -12031,11 +11881,6 @@
 /obj/structure/cliff/automatic,
 /turf/simulated/floor/water/deep,
 /area/surface/outside/ocean)
-"wA" = (
-/obj/machinery/hologram/holopad,
-/obj/effect/floor_decal/industrial/outline/grey,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/exploration)
 "wB" = (
 /obj/structure/cliff/automatic{
 	dir = 8
@@ -12194,10 +12039,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/engineering/monitoring)
-"wQ" = (
-/obj/structure/table/bench/standard,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
 "wR" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 10
@@ -12612,16 +12453,12 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/corridor)
 "xA" = (
-/obj/structure/bed/chair,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
-	},
-/obj/effect/landmark/start{
-	name = "Explorer"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
@@ -12678,14 +12515,16 @@
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outside/plains/outpost)
 "xG" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
 	},
-/turf/simulated/floor/plating,
-/area/surface/outpost/main/search_and_rescue)
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/purple/bordercorner2,
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "xH" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -12872,6 +12711,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/airlock/landing_north)
+"xX" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "xY" = (
 /obj/structure/table/glass,
 /obj/item/inflatable{
@@ -12953,20 +12801,30 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/surface/outpost/security)
-"yd" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/surface/outpost/main/gateway)
 "ye" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_alc,
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/bar)
+"yf" = (
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "yg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -13782,15 +13640,6 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/surface/outpost/civilian/fishing)
-"zN" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 4
-	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "zO" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -13849,6 +13698,12 @@
 "zT" = (
 /turf/simulated/wall/sifwood,
 /area/surface/outside/plains/sifvillage)
+"zU" = (
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "zV" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -13968,9 +13823,6 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/atmos_room)
 "Ag" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -14077,15 +13929,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/right_lower)
-"Ar" = (
-/obj/structure/table/steel,
-/obj/item/storage/box/backup_kit{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/storage/box/cdeathalarm_kit,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/exploration)
 "As" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/cable/heavyduty{
@@ -14298,21 +14141,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/laundry)
-"AJ" = (
-/obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 6
-	},
-/obj/item/tool/wrench,
-/obj/item/bodybag/cryobag,
-/obj/item/bodybag/cryobag,
-/obj/item/bodybag/cryobag,
-/obj/item/bodybag/cryobag,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "AK" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/extinguisher_cabinet{
@@ -14465,19 +14293,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/surface/outpost/mining_main)
-"AY" = (
-/obj/effect/landmark/start{
-	name = "Search and Rescue"
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "AZ" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/industrial/warning{
@@ -14921,17 +14736,24 @@
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outside/path/plains)
 "BR" = (
-/obj/structure/cable/blue{
-	icon_state = "2-8"
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 6
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 1
+	},
+/obj/machinery/mineral/equipment_vendor/survey{
+	pixel_y = 32;
+	density = 0
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "BS" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 6
@@ -15011,45 +14833,6 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/surface/outpost/main/airlock/landing_south)
-"Cc" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/camera/network/main_outpost{
-	c_tag = "MO - Search and Rescue Starboard";
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	health = 1e+006;
-	req_access = list(5)
-	},
-/obj/structure/table/rack,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/window/brigdoor/southleft{
-	dir = 8;
-	name = "EMT Supplies";
-	req_access = list(5);
-	req_one_access = list(5,43)
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "Cd" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/floor/tiled/monotile,
@@ -15349,10 +15132,14 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor)
 "CG" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/obj/effect/landmark/start{
+	name = "Explorer"
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "CH" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -15400,14 +15187,6 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/reactor_smes)
-"CN" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/white/bordercorner,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/corridor/right_upper)
 "CO" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
@@ -15585,13 +15364,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor)
-"Dj" = (
-/obj/machinery/atmospherics/unary/cryo_cell{
-	layer = 3.3
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
 "Dk" = (
 /obj/structure/closet,
 /obj/effect/floor_decal/borderfloor{
@@ -15649,14 +15421,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/airlock/left_three)
-"Do" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/surface/outpost/main/airlock/right_two)
 "Dp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16059,14 +15823,6 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/asteroid_steel/outdoors/turfpack/sif,
 /area/surface/outside/plains/sifvillage)
-"Ei" = (
-/obj/structure/table/steel,
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/multitool,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/corridor/right_upper)
 "Ej" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
@@ -16141,6 +15897,15 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/monotile,
 /area/surface/outpost/main/airlock/left_one)
+"Eq" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "Er" = (
 /obj/machinery/telecomms/relay/preset/southerncross/wild,
 /obj/machinery/light/small{
@@ -16328,6 +16093,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/mining_main/tools)
+"EP" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/bluegrid,
+/area/surface/outpost/main/exploration)
 "EQ" = (
 /turf/simulated/wall/r_wall,
 /area/surface/outpost/main/corridor/right_lower)
@@ -16372,19 +16141,6 @@
 /obj/effect/overlay/snow/floor/edges,
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outside/plains/outpost)
-"EV" = (
-/obj/structure/table/steel,
-/obj/item/stack/material/glass{
-	amount = 50;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/obj/item/stack/cable_coil,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/corridor/right_upper)
 "EW" = (
 /obj/machinery/door/airlock{
 	name = "Unit 1"
@@ -16787,22 +16543,6 @@
 "FL" = (
 /turf/simulated/wall,
 /area/surface/outpost/main/dorms/dorm_3)
-"FM" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable/blue{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "FN" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/corner/white{
@@ -17052,22 +16792,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/laundry)
-"Gn" = (
-/obj/structure/cable/blue{
-	icon_state = "2-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "Go" = (
 /obj/structure/fence/wood/corner{
 	dir = 1
@@ -17116,6 +16840,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/surface/outpost/mining_main)
+"Gs" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "Gt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -17231,10 +16964,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/sif/forest/planetuse,
 /area/surface/outside/plains/sifvillage)
-"GC" = (
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/corridor/right_upper)
 "GD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -18084,12 +17813,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/atmos_room)
-"In" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "Io" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -18269,18 +17992,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/airlock/landing_north)
-"II" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/surface/outpost/main/search_and_rescue)
 "IJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
@@ -18367,12 +18078,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/corridor/left_lower)
-"IR" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/cataloguer,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/exploration)
 "IS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -18520,22 +18225,16 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/civilian/smes)
 "Jc" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 10
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 10
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 9
 	},
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -25
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "Jd" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/floor_decal/borderfloor{
@@ -18722,9 +18421,7 @@
 /turf/simulated/floor/outdoors/grass/sif/forest/planetuse,
 /area/surface/outside/plains/sifvillage)
 "Js" = (
-/obj/structure/table/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/recharger,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -18901,6 +18598,21 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat,
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/main/airlock/landing_south)
+"JH" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "JI" = (
 /obj/structure/fence/wood/end,
 /obj/structure/fence/wood/corner{
@@ -19097,6 +18809,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/right_upper)
+"JZ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "Ka" = (
 /turf/simulated/floor/outdoors/grass/sif/planetuse,
 /area/surface/outside/plains/sifvillage)
@@ -19269,9 +18990,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/surface/outpost/main/airlock/landing_south)
-"Ku" = (
-/turf/simulated/wall/r_wall,
-/area/surface/outpost/main/gateway)
 "Kv" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -19350,6 +19068,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/security/maa)
+"KE" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "KF" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/disposalpipe/segment,
@@ -19507,38 +19234,10 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/water/deep,
 /area/surface/outside/river/indalsalven)
-"KY" = (
-/obj/machinery/iv_drip,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 4
-	},
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 22
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "KZ" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/obj/effect/floor_decal/steeldecal/steel_decals6,
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "La" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -20147,43 +19846,11 @@
 /turf/simulated/floor/water/deep/ocean,
 /area/surface/outside/ocean)
 "Me" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
-/obj/structure/table/glass,
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 5;
-	pixel_y = 5
+/obj/structure/bed/chair/office/light{
+	dir = 4
 	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/o2{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/o2{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -5;
-	pixel_y = -5
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "Mf" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20237,12 +19904,14 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/construction_area)
 "Mm" = (
-/obj/structure/table/bench/standard,
-/obj/item/radio/intercom/department/medbay{
-	pixel_y = -21
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
+/area/surface/outpost/main/exploration)
 "Mn" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor/edges{
@@ -20373,26 +20042,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/airlock/landing_south)
-"MB" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/obj/machinery/door/window/brigdoor/westleft{
-	name = "Medical Supplies";
-	req_access = null;
-	req_one_access = list(5,43)
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "MC" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/laundry)
+"MD" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/surface/outpost/main/exploration)
 "ME" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20770,18 +20434,6 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/outline,
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
@@ -20897,7 +20549,6 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/airlock/left_three)
 "Nx" = (
-/obj/structure/table/steel,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -20948,6 +20599,21 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outside/plains/outpost)
+"ND" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "NE" = (
 /obj/machinery/disposal,
 /obj/machinery/button/remote/airlock{
@@ -21096,6 +20762,47 @@
 /obj/effect/map_effect/portal/line/side_a,
 /turf/simulated/wall/r_wall,
 /area/surface/outpost/mining_main/exterior)
+"NS" = (
+/obj/structure/table/rack/shelf,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
+"NT" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "NU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -21164,6 +20871,26 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/reactor_smes)
+"Oa" = (
+/obj/structure/dispenser/oxygen,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "Ob" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -21204,6 +20931,26 @@
 "Of" = (
 /turf/simulated/wall/r_wall,
 /area/surface/outpost/security/maa)
+"Og" = (
+/obj/machinery/suit_cycler/pilot,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "Oh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -21244,10 +20991,45 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/surface/outpost/engineering/reactor_smes)
+"Ok" = (
+/obj/machinery/suit_cycler/exploration,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "Ol" = (
 /obj/structure/dark_portal/minion,
 /turf/simulated/mineral/floor/ignore_mapgen/sif,
 /area/surface/outside/plains/mountains)
+"Om" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/window/reinforced/full,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/surface/outpost/main/exploration)
+"On" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "Oo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -21255,16 +21037,12 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/exploration)
 "Op" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 4
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
+/area/surface/outpost/main/exploration)
 "Oq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -21274,6 +21052,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/civilian/fishing)
+"Or" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "Os" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -21367,6 +21154,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/main/airlock/landing_south)
+"Oz" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "OA" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -21426,6 +21226,10 @@
 "OF" = (
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/bar)
+"OG" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "OH" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
@@ -21747,6 +21551,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/janitor)
+"Pn" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/window/reinforced/full,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/surface/outpost/main/exploration)
 "Po" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
@@ -22107,23 +21920,6 @@
 /obj/structure/sign/electricshock,
 /turf/simulated/wall,
 /area/surface/outpost/civilian/smes)
-"PZ" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Search and Rescue";
-	req_one_access = null
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/steeldecal/steel_decals_central1{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/multi_tile/glass,
-/turf/simulated/floor/tiled/monotile,
-/area/surface/outpost/main/search_and_rescue)
 "Qa" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
@@ -22213,35 +22009,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/mining_main/tools)
-"Qi" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 1
-	},
-/obj/structure/table/glass,
-/obj/item/roller{
-	pixel_x = 8;
-	pixel_y = 1
-	},
-/obj/item/roller{
-	pixel_x = 8;
-	pixel_y = 9
-	},
-/obj/item/roller{
-	pixel_x = -8;
-	pixel_y = 1
-	},
-/obj/item/roller{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "Qj" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -22932,22 +22699,6 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/surface/outpost/main/airlock/right_three)
-"RD" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/structure/table/glass,
-/obj/item/clothing/accessory/stethoscope,
-/obj/item/defib_kit/loaded,
-/obj/item/defib_kit/compact/loaded,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "RF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/blue{
@@ -22980,11 +22731,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/surface/outpost/main/gateway)
 "RI" = (
-/obj/structure/table/steel,
-/obj/structure/closet/hydrant{
-	pixel_y = -32
-	},
-/obj/item/clothing/glasses/meson,
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
@@ -23075,23 +22821,6 @@
 /turf/simulated/floor/wood/sif,
 /area/surface/outpost/wall)
 "RS" = (
-/obj/structure/table/rack/shelf,
-/obj/item/storage/backpack/parachute{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/storage/backpack/parachute{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/storage/backpack/parachute{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/storage/backpack/parachute{
-	pixel_x = 6;
-	pixel_y = -6
-	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
 	},
@@ -23299,27 +23028,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/right_lower)
-"Sq" = (
-/obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/storage/box/bodybags,
-/obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = 7;
-	pixel_y = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "Sr" = (
 /obj/structure/fitness/weightlifter,
 /turf/simulated/floor/holofloor/wood,
@@ -23813,13 +23521,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/emergency_storage/two)
-"TC" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/structure/closet/secure_closet/pilot,
-/obj/item/cataloguer/compact,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/exploration)
 "TD" = (
 /obj/structure/fence{
 	dir = 8
@@ -23963,13 +23664,6 @@
 	},
 /turf/simulated/floor/tiled/steel/sif/planetuse,
 /area/surface/outpost/main/airlock/left_three)
-"TR" = (
-/obj/structure/bed/chair,
-/obj/effect/landmark/start{
-	name = "Explorer"
-	},
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/exploration)
 "TS" = (
 /obj/machinery/light{
 	dir = 8
@@ -23992,24 +23686,14 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/surface/outpost/main/airlock/landing_north)
-"TU" = (
-/obj/machinery/atmospherics/unary/freezer{
-	icon_state = "freezer"
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
 "TV" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/reactor_smes)
 "TW" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/item/binoculars,
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/item/cataloguer,
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/main/exploration)
 "TX" = (
@@ -24018,17 +23702,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/airlock/left_two)
-"TZ" = (
-/obj/structure/closet/crate/secure/gear{
-	name = "explorer crate";
-	req_access = list(43)
-	},
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/belt/utility/full,
-/obj/effect/floor_decal/industrial/outline,
-/obj/item/clothing/head/welding,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/corridor/right_upper)
 "Ua" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -24717,12 +24390,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating/sif/planetuse,
 /area/surface/outside/plains/outpost)
-"Vs" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/exploration)
 "Vt" = (
 /obj/machinery/button/remote/blast_door/radproof{
 	name = "Engine Monitoring Room Blast Doors";
@@ -25258,11 +24925,11 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/surface/outpost/engineering/monitoring)
 "WA" = (
-/obj/structure/closet/secure_closet/sar,
-/obj/item/storage/pill_bottle/spaceacillin,
-/obj/item/roller/adv,
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/search_and_rescue)
+/obj/machinery/vending/exploration_weapons{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/surface/outpost/main/exploration)
 "WB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -25644,13 +25311,6 @@
 "Xm" = (
 /turf/simulated/floor/plating,
 /area/surface/outpost/engineering/reactor_smes)
-"Xn" = (
-/obj/effect/floor_decal/industrial/warning/corner,
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "Xo" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external/public{
@@ -25683,12 +25343,6 @@
 /obj/item/flashlight/maglight,
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/construction_area)
-"Xr" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/surface/outpost/main/exploration)
 "Xt" = (
 /obj/structure/sink{
 	pixel_y = 16
@@ -25916,12 +25570,6 @@
 "XN" = (
 /turf/simulated/floor/water/deep,
 /area/surface/outside/lake/romsele)
-"XO" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central1{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/surface/outpost/main/search_and_rescue)
 "XP" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
@@ -26111,11 +25759,11 @@
 /turf/simulated/floor/tiled,
 /area/surface/outpost/mining_main/tools)
 "Yj" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "Yk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -26135,17 +25783,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_2)
-"Ym" = (
-/obj/structure/closet/crate/secure/gear{
-	name = "explorer crate";
-	req_access = list(43)
-	},
-/obj/item/bodybag/cryobag,
-/obj/item/bodybag/cryobag,
-/obj/item/storage/firstaid/regular,
-/obj/effect/floor_decal/industrial/outline,
-/turf/simulated/floor/tiled/dark,
-/area/surface/outpost/main/corridor/right_upper)
 "Yo" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/disposalpipe/segment{
@@ -26447,12 +26084,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/gym)
-"YT" = (
-/obj/effect/landmark/start{
-	name = "Search and Rescue"
-	},
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
 "YU" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/white/border,
@@ -26834,7 +26465,6 @@
 /turf/simulated/wall/r_wall,
 /area/surface/outpost/engineering/smes)
 "ZL" = (
-/obj/structure/table/bench/standard,
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -26886,28 +26516,10 @@
 /turf/simulated/floor/wood,
 /area/surface/outpost/main/dorms/dorm_3)
 "ZR" = (
-/obj/structure/table/glass,
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/item/backup_implanter{
-	pixel_y = -6
-	},
-/obj/item/backup_implanter{
-	pixel_y = 6
-	},
-/obj/item/backup_implanter{
-	pixel_y = 12
-	},
-/obj/item/backup_implanter,
-/turf/simulated/floor/tiled/white,
-/area/surface/outpost/main/search_and_rescue)
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled,
+/area/surface/outpost/main/exploration)
 "ZS" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -53687,10 +53299,10 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -53943,14 +53555,14 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
+XE
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -54202,12 +53814,12 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -54462,9 +54074,9 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -54726,9 +54338,9 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -54985,9 +54597,9 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -55248,9 +54860,9 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -55505,10 +55117,10 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -55765,7 +55377,7 @@ Ey
 Ey
 Ey
 Ey
-Ey
+XE
 Ey
 Ey
 Ey
@@ -56784,7 +56396,7 @@ Ey
 Ey
 Ey
 Ey
-Ey
+XE
 Ey
 Ey
 Ey
@@ -57041,12 +56653,12 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -57299,13 +56911,13 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
+XE
+XE
+XE
 Ey
 Ey
 gx
@@ -57558,12 +57170,12 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -57818,10 +57430,10 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
+XE
+XE
+XE
+XE
 Ey
 Ey
 Ey
@@ -58078,8 +57690,8 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
+XE
+XE
 Ey
 Ey
 Ey
@@ -58337,7 +57949,7 @@ Ey
 Ey
 Ey
 Ey
-Ey
+XE
 Ey
 Ey
 Ey
@@ -61071,7 +60683,7 @@ ha
 ha
 ha
 ha
-pw
+ha
 ha
 ha
 ha
@@ -61329,7 +60941,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
@@ -61587,7 +61199,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
@@ -61845,7 +61457,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
@@ -61853,7 +61465,7 @@ ha
 ha
 GJ
 GJ
-Do
+GJ
 GJ
 GJ
 ha
@@ -62103,7 +61715,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
@@ -62361,7 +61973,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
@@ -62619,7 +62231,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
@@ -62877,7 +62489,6 @@ ha
 ha
 ha
 ha
-nH
 ha
 ha
 ha
@@ -62890,6 +62501,7 @@ ha
 ha
 ha
 ha
+Ip
 GJ
 jw
 yY
@@ -63132,23 +62744,23 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-gj
-gj
-sw
-sw
-sw
-GJ
+Ip
+Ip
+ed
+ed
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
+Ip
 Od
 bM
 PM
@@ -63389,31 +63001,31 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-ha
-gj
+Ip
+Ip
+Or
+NI
+Mm
+Ip
+JZ
+Eq
+ts
+Yj
+gN
+qT
 gj
 de
-WA
+bT
 WA
 sx
-GJ
+Ip
 GJ
 EI
 tM
 GJ
 oo
-om
-IR
+qm
+qm
 TW
 Ip
 Ip
@@ -63646,26 +63258,26 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-gj
-gj
+Ip
+Ip
+Or
+mR
+uJ
+KT
+Ip
+KE
+EP
+vB
+uJ
+KT
+qT
 vE
-wQ
-wQ
-wQ
+NI
+NI
+NI
 Mm
-pN
-EV
+qT
+uJ
 tx
 XU
 qT
@@ -63903,27 +63515,27 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-xG
-kK
-BR
-rz
-FM
-uN
+Ip
+Ip
+Oz
+mR
+uJ
+uJ
+KT
+Ip
+MD
+Gs
+xX
+kN
 Jc
-pN
-Ei
+Ip
+BR
+Kp
+Kp
+Kp
+Jc
+qT
+uJ
 af
 ef
 qT
@@ -64160,37 +63772,37 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-xG
-II
+Ip
+Ip
+Or
+mR
+uJ
+uJ
+uJ
+KT
+Ip
+Ip
+Ip
+Ip
+mp
+tg
+pd
 Yj
 tc
 ZR
 CG
 tg
 pd
-GC
+uJ
 af
 qI
 WQ
 EX
-TR
-EK
-Ar
+uJ
+uJ
+uJ
 Ag
-TC
+KT
 ga
 LW
 ha
@@ -64418,27 +64030,27 @@ pC
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-xG
-Qi
-In
-YT
-Gn
-lR
+Ip
+Or
+mR
+uJ
+uJ
+On
+On
+KT
+qT
+yf
+yf
+yf
+ah
 KZ
-PZ
+uJ
+kN
+uJ
+uJ
+uJ
+KZ
+uJ
 iY
 yG
 jJ
@@ -64676,35 +64288,35 @@ pC
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
+Pn
+ah
+EK
+EK
+uJ
+On
+On
+Jc
+qT
+ND
+NI
+NI
+mR
 xG
-eg
-fy
-fy
+qT
+WQ
+WQ
 cC
-AY
-nv
-XO
-CN
+WQ
+WQ
+qT
+uJ
 gX
 pZ
 rI
 kN
-Vs
 uJ
-Xr
+uJ
+uJ
 Oo
 KT
 ga
@@ -64934,34 +64546,34 @@ pC
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-gj
-Sq
-cX
-bs
-RD
-MB
-bX
+Pn
+ah
+OG
+EK
+uJ
+On
+On
+tg
 pd
-TZ
+Yj
+uJ
+uJ
+uJ
+Jc
+WQ
+EK
+EK
+uJ
+uJ
+uJ
+aE
+uJ
 Hk
 Hi
 WQ
 vh
 lL
-Kp
+uJ
 eT
 fz
 Ev
@@ -65192,34 +64804,34 @@ pC
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-gj
-Dj
-rv
-Xn
-gg
-zN
+Pn
+ah
+OG
+EK
+uJ
+uJ
+uJ
+KZ
+uJ
+kN
+uJ
+uJ
+uJ
+hE
+uJ
+uJ
+uJ
+uJ
+uJ
 Me
-pd
-Ym
+EK
+uJ
 Hk
 kE
 qT
 cU
 ah
-Kp
+uJ
 KT
 No
 kx
@@ -65450,34 +65062,34 @@ pC
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-gj
-TU
-KY
-ql
+Pn
+ah
+OG
+EK
+uJ
+On
+On
+iP
+qT
+vh
+lL
+uJ
+uJ
+iP
+WQ
+uJ
+uJ
 Op
-Cc
-AJ
-pd
-gS
+EK
+uJ
+bc
+uJ
 Hk
 kE
 qT
 hh
 ah
-wA
+uJ
 KT
 pD
 kx
@@ -65708,26 +65320,26 @@ pC
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-Ku
-Ku
+Pn
+ah
+EK
+EK
+uJ
+On
+On
+KT
+qT
+NS
+ah
+uJ
+uJ
+KT
 QW
 QW
 QW
-Ky
-Ky
+QW
+QW
+QW
 QW
 QW
 Ea
@@ -65966,21 +65578,21 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-ha
-Ku
+Ip
+hd
+lL
+uJ
+uJ
+On
+On
+KT
+qT
+NS
+ah
+uJ
+uJ
+KT
+QW
 eE
 ST
 Xl
@@ -66224,21 +65836,21 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-ha
-yd
+Ip
+Ip
+hd
+lL
+uJ
+uJ
+uJ
+KT
+qT
+NT
+ah
+uJ
+uJ
+KT
+QW
 JM
 qQ
 Co
@@ -66483,20 +66095,20 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-ha
-yd
+Ip
+Ip
+hd
+lL
+uJ
+uJ
+KT
+qT
+Oa
+ah
+uJ
+uJ
+KT
+QW
 JM
 EA
 Co
@@ -66742,19 +66354,19 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-ha
-yd
+Ip
+Ip
+hd
+lL
+uJ
+KT
+qT
+Og
+ah
+uJ
+uJ
+KT
+QW
 JM
 qQ
 Co
@@ -67001,18 +66613,18 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
-ha
-Ku
+Ip
+Ip
+hd
+US
+Rm
+qT
+Ok
+JH
+zU
+ne
+lH
+QW
 RH
 PJ
 uL
@@ -67260,15 +66872,15 @@ ha
 ha
 ha
 ha
-ha
-ha
-ha
-nH
-ha
-ha
-ha
-ha
-ha
+Ip
+Ip
+Om
+Om
+Ip
+mJ
+mJ
+Mz
+to
 mJ
 mJ
 mJ
@@ -67521,12 +67133,12 @@ ha
 ha
 ha
 ha
-nH
 ha
 ha
-ha
-ha
-ha
+mJ
+Mz
+Mz
+Mz
 mJ
 pE
 pE
@@ -67779,12 +67391,12 @@ ha
 ha
 ha
 ha
-nH
 ha
 ha
-ha
-ha
-ha
+mJ
+Mz
+Mz
+Mz
 WM
 pE
 pE
@@ -68037,12 +67649,12 @@ ha
 ha
 ha
 ha
-nH
 ha
 ha
-ha
-ha
-ha
+mJ
+Mz
+Mz
+Mz
 WM
 Mz
 OU
@@ -68295,12 +67907,12 @@ ha
 ha
 ha
 ha
-nH
 ha
 ha
-ha
-ha
-ha
+mJ
+Mz
+Mz
+Mz
 WM
 bK
 vZ
@@ -68553,12 +68165,12 @@ ha
 ha
 ha
 ha
-nH
 ha
 ha
-ha
-ha
-ha
+mJ
+Mz
+Mz
+Mz
 mJ
 AP
 qF
@@ -68811,12 +68423,12 @@ ha
 ha
 ha
 ha
-nH
 ha
 ha
-ha
-ha
-ha
+mJ
+mJ
+mJ
+mJ
 mJ
 mJ
 AO
@@ -69069,7 +68681,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
@@ -69327,7 +68939,7 @@ ha
 ha
 ha
 ha
-nH
+ha
 ha
 ha
 ha
